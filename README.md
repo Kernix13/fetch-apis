@@ -2,6 +2,10 @@
 
 My notes and code examples for getting async / await, fetch, and APIs engrained in my brain. And eventually RESTful APIs including WordPress REST API.
 
+Will most likely be using `console.log()` for the data I fetch:
+
+> I love React for the ease of writing to the DOM, especially when you need to display lists!
+
 ## Fetch examples
 
 Find APIs with simple (and **FREE**) endpoints, preferably without having to _sign-up_ or other requirements.
