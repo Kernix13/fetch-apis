@@ -1,57 +1,52 @@
-// by final endpoint type
-const fetchByType = async (url, type) => {
+/* 1. For simple url endpoints */
+
+async function fetchByUrl(url) {
   try {
     // await the fetch request
-    const res = await fetch(`${url}${type}`);
+    const result = await fetch(url);
     // await the response from the fetch request
-    const data = await res.json();
-    console.log(data);
-  } catch (err) {
-    console.error(err);
-  }
-};
-// fetchByType("https://jsonplaceholder.typicode.com/", "users/1");
-// fetchByType("http://api.zippopotam.us/us/", "19064");
-fetchByType("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=", "tequila");
-// www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
+    const data = await result.json();
 
-// for specific url's / endpoints
-const fetchByUrl = async url => {
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
     console.log(data);
   } catch (err) {
     console.error(err);
   }
-};
-// fetchByUrl("https://randomuser.me/api/");
+}
+fetchByUrl("https://randomuser.me/api/");
+/* below is invalid api key 401 */
 // fetchByUrl("https://odds.p.rapidapi.com/v4/sports");
 
-// by endpoint parameter for specific endpoint url's
-const fetchByParam = async (prefix, param, suffix) => {
+/* 2. More common type endpoint as parameter */
+
+async function fetchByType(url, type) {
   try {
-    const res = await fetch(`${prefix}${param}${suffix}`);
-    const data = await res.json();
+    // await the fetch request
+    const result = await fetch(`${url}${type}`);
+    // await the response from the fetch request
+    const data = await result.json();
+
     console.log(data);
   } catch (err) {
     console.error(err);
   }
-};
-// fetchByParam("https://dog.ceo/api/breed", "/hound", "/images");
+}
+// fetchByType("https://jsonplaceholder.typicode.com/", "users/1");
+// fetchByType("http://api.zippopotam.us/us/", "19064");
+fetchByType("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=", "vodka");
+// www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
 
-// NetNinja example:
-const getUserDims = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+/* 3. With 2 variable endpoint parameters */
 
-  if (res.status !== 200) {
-    throw new Error("Cannot fetch the data");
+async function fetchByParam(url, cat, subcat) {
+  try {
+    // await the fetch request
+    const result = await fetch(`${url}${cat}${subcat}`);
+    // await the response from the fetch request
+    const data = await result.json();
+
+    console.log(data);
+  } catch (err) {
+    console.error(err);
   }
-
-  const data = await res.json();
-
-  return data;
-};
-// getUserDims()
-//   .then(data => console.log("Resolved:", data))
-//   .catch(err => console.log("Rejected:", err));
+}
+fetchByParam("https://dog.ceo/api/breed", "/hound", "/images");

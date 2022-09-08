@@ -1,8 +1,8 @@
 # Fetch and async await API
 
-My notes and code examples for getting async / await, fetch, and APIs engrained in my brain. And eventually RESTful APIs including WordPress REST API.
+My notes and code examples for getting API data using async & await with the fetch API. I will add RESTful APIs including the WordPress REST API at a later date.
 
-Will most likely be using `console.log()` for the data I fetch:
+I have function programming code examples for the various type of endpoints. Right now I am using `console.log()` for the data I fetch:
 
 > I love React for the ease of writing to the DOM, especially when you need to display lists!
 
@@ -32,3 +32,40 @@ Find APIs with simple (and **FREE**) endpoints, preferably without having to _si
    1. https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest
 1. Wayback Machine APIs: `http://archive.org/wayback/available?url=${example.com}`
 1. Cocktail database: https://www.thecocktaildb.com/api.php - `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${margarita}` or by letter `${a}` or use ingredient `${vodka}`
+
+## Async function
+
+From [MDN async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function):
+
+> An async function is a function declared with the async keyword, and the await keyword is permitted within it. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
+
+### Syntax
+
+I'm defining the url and other endpoint parameters as params and grouping similar APIs in the various types.
+
+```js
+async function name(...params) {
+  try {
+    // await the fetch request
+    const result = await fetch(...params);
+    // await the response from the fetch request
+    const data = await result.json();
+
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+```
+
+I have no interest in using `Promise` or `.then()`.
+
+## Response json method
+
+From [MDN Response.json](https://developer.mozilla.org/en-US/docs/Web/API/Response/json):
+
+> The json() method of the Response interface takes a Response stream and reads it to completion. It returns a promise which resolves with the result of parsing the body text as JSON.
+
+From [MDN Response](https://developer.mozilla.org/en-US/docs/Web/API/Response):
+
+> The Response interface of the Fetch API represents the response to a request
