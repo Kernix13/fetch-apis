@@ -13,7 +13,18 @@ Find APIs with simple (and **FREE**) endpoints, preferably without having to _si
 ### Free APIS
 
 1. github list: https://github.com/public-apis/public-apis
+   1. 1
+   1. 2
+   1. 3
+   1. 4
+   1. 5
+   1. 6
+   1. 7
+   1. 8
 1. another list: https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/
+   1. 1
+   1. 2
+   1. 3
 1. https://jsonplaceholder.typicode.com/ - Types: /posts, /comments, /albums, /photos, /todos, /users
 1. get your ip address - endpoint: https://api.ipify.org?format=json
 1. random user - https://randomuser.me/
@@ -41,7 +52,13 @@ From [MDN async function](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 
 ### Syntax
 
-I'm defining the url and other endpoint parameters as params and grouping similar APIs in the various types.
+I'm defining the url and other endpoint parameters as params and grouping similar APIs in the various types. Currently I have the following Fetch functions defined:
+
+1. Endpoint URL only (`fetchByUrl`)
+1. Endpoint URL with single type parameter (`fetchByType`)
+1. Endpoint URL with 2 or more parameters (`fetchByParams`)
+
+Here is the basic structure I have right now for each function in the scripts file:
 
 ```js
 async function name(...params) {

@@ -37,7 +37,7 @@ fetchByType("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=", "vodka"
 
 /* 3. With 2 variable endpoint parameters */
 
-async function fetchByParam(url, cat, subcat) {
+async function fetchByParams(url, cat, subcat) {
   try {
     // await the fetch request
     const result = await fetch(`${url}${cat}${subcat}`);
@@ -49,4 +49,4 @@ async function fetchByParam(url, cat, subcat) {
     console.error(err);
   }
 }
-fetchByParam("https://dog.ceo/api/breed", "/hound", "/images");
+fetchByParams("https://dog.ceo/api/breed", "/hound", "/images");
