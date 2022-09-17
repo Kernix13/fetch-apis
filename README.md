@@ -22,10 +22,24 @@ Find APIs with simple (and **FREE**) endpoints, preferably without having to _si
    1. 7
    1. 8
 1. another list: https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/
-   1. 1
-   1. 2
-   1. 3
-1. https://jsonplaceholder.typicode.com/ - Types: /posts, /comments, /albums, /photos, /todos, /users
+   1. [**7Timer!**](http://www.7timer.info/doc.php?lang=en): Weather forecasts
+   1. [Archive.org](https://archive.readme.io/docs): Large public digital archive
+   1. [CoinBase](https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-users#data-endpoints): Currency codes and names
+   1. [ExchangeRate-API](https://www.exchangerate-api.com/docs/overview): Exchange rates
+   1. [FreeGeoIP](https://ipbase.com/): GeoIP info
+   1. [House Stock Watcher](https://housestockwatcher.com/api): Congress members’ stock transactions
+   1. [Image-Charts](https://documentation.image-charts.com/): Chart images
+   1. [**MusicBrainz**](https://musicbrainz.org/doc/MusicBrainz_API): Music data
+   1. [Nager.Date](https://date.nager.at/): Public holidays
+   1. [Nominatum](https://nominatim.org/release-docs/latest/api/Overview/): Locations and addresses
+   1. [**Numbers API**](http://numbersapi.com/#random/math): Facts about numbers
+   1. [Open Brewery DB](https://www.openbrewerydb.org/): open-source brewery data
+   1. [**Open Food Facts**](https://world.openfoodfacts.org/data): Data on food products
+   1. [Open Library](https://openlibrary.org/developers/api): Information about books
+   1. [Placekitten](http://placekitten.com/): Placeholder kitten images
+   1. [Universities List](): universities and their domain names
+   1. [WordPress](https://developer.wordpress.org/rest-api/reference/): Public posts from any WordPress site
+1. [JSONPlaceholder](https://jsonplaceholder.typicode.com/) - Types: /posts, /comments, /albums, /photos, /todos, /users
 1. get your ip address - endpoint: https://api.ipify.org?format=json
 1. random user - https://randomuser.me/
 1. zip code info - `http://api.zippopotam.us/us/${zip_code}`
@@ -37,11 +51,11 @@ Find APIs with simple (and **FREE**) endpoints, preferably without having to _si
    1. by breed: https://dog.ceo/api/breed/hound/images
    1. by sub-breed: https://dog.ceo/api/breed/hound/list
    1. browse breed list: `https://dog.ceo/api/breed/${breedName}/images/random`
-1. https://datausa.io/about/api/ - examples:
+1. Data USA, US public data: https://datausa.io/about/api/ - examples:
    1. https://datausa.io/api/data?drilldowns=Nation&measures=Population
    1. https://datausa.io/api/data?drilldowns=Nation&measures=Population&year=latest
    1. https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest
-1. Wayback Machine APIs: `http://archive.org/wayback/available?url=${example.com}`
+1. **Wayback Machine APIs**, https://archive.org/help/wayback_api.php: `http://archive.org/wayback/available?url=${example.com}`
 1. Cocktail database: https://www.thecocktaildb.com/api.php - `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${margarita}` or by letter `${a}` or use ingredient `${vodka}`
 
 ## Async function
