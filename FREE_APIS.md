@@ -28,7 +28,7 @@ Table breakdown (Work-In-Progress): Animals (8) | Books (5) | ?-? = Business | ?
 | 4. PoetryDB     | poetry collection         |  Yes  |  Yes  |  ?   |
 | 5. Rig Veda     | ...                       |  Yes  |  Unk  |  ?   |
 | **BUSINESS**    | -                         |   -   |   -   |  -   |
-| 1.              |                           |       |       |      |
+| 1.              | -                         |   -   |   -   |  -   |
 
 Links and basic structure:
 

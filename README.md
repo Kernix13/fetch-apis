@@ -12,15 +12,7 @@ Find APIs with simple (and **FREE**) endpoints, preferably without having to _si
 
 ### Free APIS
 
-1. github list: https://github.com/public-apis/public-apis
-   1. 1
-   1. 2
-   1. 3
-   1. 4
-   1. 5
-   1. 6
-   1. 7
-   1. 8
+1. github list: https://github.com/public-apis/public-apis - see FREE_APIS.md
 1. another list: https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/
    1. [**7Timer!**](http://www.7timer.info/doc.php?lang=en): Weather forecasts
    1. [Archive.org](https://archive.readme.io/docs): Large public digital archive
