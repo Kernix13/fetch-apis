@@ -12,7 +12,7 @@ body {
 .container {
   width: 80%;
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0 auto 5rem;
 }
 
 ul {
@@ -26,6 +26,9 @@ ul {
 }
 .indent2 {
   margin-left: 2em;
+}
+.indent3 {
+  margin-left: 3em;
 }
 
 blockquote {

@@ -1,3 +1,4 @@
+const randomOutput = document.getElementById("random-output");
 /* 1. For simple url endpoints */
 
 async function fetchByUrl(url) {
@@ -19,20 +20,12 @@ async function fetchByUrl(url) {
   }
 }
 // now random user isn't working - DDos attack since july
-fetchByUrl("http://api.zippopotam.us/us/19064").then(data => {
-  // alert(data["post code"]);
-  console.log(data.places[0].latitude, data.places[0].longitude, data.places[0]["place name"]);
-});
-// console.log(fetchByUrl("http://api.zippopotam.us/us/19064"));
-// fetchByUrl("https://randomuser.me/api/");
-// console.log(fetchByUrl("https://randomuser.me/api/"));
-/* below is invalid api key 401 */
-// fetchByUrl("https://odds.p.rapidapi.com/v4/sports");
-// function test(fx) {
-//   const zip = fx["post code"];
-//   return zip;
-// }
-// console.log(fetchByUrl("http://api.zippopotam.us/us/19064"));
+// fetchByUrl("http://api.zippopotam.us/us/19064").then(data => {
+//   alert(data["post code"]);
+//   console.log(data.places[0].latitude, data.places[0].longitude, data.places[0]["place name"]);
+// });
+
+// fetchByUrl("https://cat-fact.herokuapp.com/facts");
 
 /* 2. More common type: endpoint as parameter */
 
@@ -45,6 +38,7 @@ async function fetchByType(url, type) {
       // await the response from the fetch request
       const data = await response.json();
       console.log(data);
+      // return data;
     } else {
       console.log("Not successful");
     }
@@ -52,12 +46,14 @@ async function fetchByType(url, type) {
     console.error(err);
   }
 }
+// fetchByType("https://zoo-animal-api.herokuapp.com/", "animals/rand");
 // fetchByType("https://jsonplaceholder.typicode.com/", "users/1");
+// fetchByType("https://meowfacts.herokuapp.com/", "?count=3");
 // fetchByType("http://api.zippopotam.us/us/", "19064");
-fetchByType("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=", "vodka");
+// fetchByType("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=", "vodka");
 // www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
 
-/* 3. With 2 or more endpoint parameters */
+/* 3. With 3 endpoint parameters */
 
 async function fetchByParams(url, cat, subcat) {
   try {
@@ -68,6 +64,7 @@ async function fetchByParams(url, cat, subcat) {
       // await the response from the fetch request
       const data = await response.json();
       console.log(data);
+      return data;
     } else {
       console.log("Not sucessful");
     }
@@ -75,20 +72,258 @@ async function fetchByParams(url, cat, subcat) {
     console.error(err);
   }
 }
-fetchByParams("https://dog.ceo/api/breed", "/hound", "/images");
+// fetchByParams("https://dog.ceo/api/breed", "/hound", "/images");
 
-// new one using .blob for an image and .then() to check the response
-async function getImage(url) {
-  const response = await fetch(url);
-  const blob = await response.blob();
-  document.getElementById("fetch-image").src = URL.createObjectURL(blob);
+// TRAVERSY VIDEO
+// from local text file
+document.getElementById("getText").addEventListener("click", getText);
+async function getText() {
+  // console.log("Working");
+  try {
+    const response = await fetch("sample.txt");
+    // console.log(response);
+    if (response.ok) {
+      const data = await response.text();
+      // console.log(data);
+      document.getElementById("output").innerHTML = data;
+    } else {
+      console.log("Not successful");
+    }
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-getImage("https://unsplash.it/300/200")
-  .then(response => {
-    console.log("It Worked!");
-  })
-  .catch(error => {
-    console.log("ERROR!");
+// from local json file
+
+document.getElementById("getUsers").addEventListener("click", getUsers);
+async function getUsers() {
+  // console.log("Working");
+  try {
+    const response = await fetch("users.json");
+    // console.log(response);
+    if (response.ok) {
+      const data = await response.json();
+      let userOutput = `<h2>Users</h2>`;
+      data.forEach(user => {
+        userOutput += `
+          <ul>
+            <li>ID: ${user.id}</li>
+            <li>Name: ${user.name}</li>
+            <li>Email: ${user.email}</li>
+          </ul>
+        `;
+      });
+      document.getElementById("output").innerHTML = userOutput;
+      // console.log(data);
+    } else {
+      console.log("Not successful");
+    }
+  } catch (error) {
     console.error(error);
-  });
+  }
+}
+
+// from external api
+document.getElementById("getPosts").addEventListener("click", getPosts);
+async function getPosts() {
+  // console.log("Working");
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    // console.log(response);
+
+    if (response.ok) {
+      const data = await response.json();
+      // console.log(data);
+      let postOutput = `<h2>Posts</h2>`;
+      data.forEach(post => {
+        postOutput += `
+          <div>
+            <h3>${post.title}</h3>
+            <p>${post.body}</p>
+          </div>
+        `;
+      });
+      document.getElementById("output").innerHTML = postOutput;
+    } else {
+      console.log("Not successful");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// add user post
+document.getElementById("addPost").addEventListener("submit", addPost);
+async function addPost(e) {
+  e.preventDefault();
+
+  const title = document.getElementById("title").value;
+  const body = document.getElementById("body").value;
+  console.log("Post Working");
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({ title: title, body: body })
+    });
+    console.log(response);
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      // code to output to DOM here
+    } else {
+      console.log("Not successful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function fetchImagesByParams(url, cat, subcat) {
+  try {
+    // await the fetch request
+    const response = await fetch(`${url}${cat}${subcat}`);
+    // console.log(response);
+    if (response.ok) {
+      // await the response from the fetch request
+      const data = await response.json();
+      console.log(data);
+      let imagesBlock = `<h3>${cat.toUpperCase().slice(1)} IMAGES</h3>`;
+      data.message.slice(0, 4).forEach(image => {
+        imagesBlock += `
+        <img src="${image}" />
+        `;
+      });
+      randomOutput.innerHTML = imagesBlock;
+      // return data;
+    } else {
+      console.log("Not sucessful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+// fetchImagesByParams("https://dog.ceo/api/breed", "/hound", "/images");
+
+async function fetchTextByType(url, type) {
+  try {
+    const response = await fetch(`${url}${type}`);
+    // console.log(response);
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      let textBlock = `<h3>${data.data.length} Cat Facts</h3>`;
+      data.data.forEach(text => {
+        textBlock += `
+        <p>${text}</p>
+        `;
+      });
+      randomOutput.innerHTML = textBlock;
+    } else {
+      console.log("Not successful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+// fetchTextByType("https://zoo-animal-api.herokuapp.com/", "animals/rand");
+// fetchTextByType("https://meowfacts.herokuapp.com/", "?count=3");
+
+async function fetchMeowFacts(url, type) {
+  try {
+    const response = await fetch(`${url}${type}`);
+    console.log(response);
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      // let textBlock = `<h3>${data.data.length} Cat Facts</h3>`;
+      // data.data.forEach(text => {
+      //   textBlock += `
+      //   <p>${text}</p>
+      //   `;
+      // });
+      // randomOutput.innerHTML = textBlock;
+    } else {
+      console.log("Not successful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+// fetchMeowFacts("http://dog-api.kinduff.com", "/api/facts");
+async function dogFacts(url, cat, subcat) {
+  try {
+    const response = await fetch(`${url}${cat}${subcat}`);
+    console.log(response);
+    if (response.ok) {
+      const data = await response.text();
+      console.log(data);
+      return data;
+    } else {
+      console.log("Not sucessful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+// dogFacts("http://dog-api.kinduff.com", "/api/facts", "?number=1");
+
+// async function dogFacts(url, cat, subcat) {
+//   try {
+//     const response = await fetch(`${url}${cat}${subcat}`);
+//     console.log(response);
+//     if (response.ok) {
+//       const data = await response.json();
+//       console.log(data);
+//       return data;
+//     } else {
+//       console.log("Not sucessful");
+//     }
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
+// dogFacts("http://dog-api.kinduff.com", "/api/facts", "?number=5");
+
+async function fetchPlaceKitten(url, type) {
+  try {
+    const response = await fetch(`${url}${type}`);
+    if (response.ok) {
+      const data = await response.blob();
+      console.log(data);
+      document.getElementById("fetch-image").src = URL.createObjectURL(data);
+    } else {
+      console.log("Not successful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+fetchPlaceKitten("https://placekitten.com/", "200/300");
+
+async function fetchZooAnimals(url, type) {
+  try {
+    const response = await fetch(`${url}${type}`);
+    console.log(response);
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      let textBlock = `<h3>Random Zoo Animal</h3>`;
+      textBlock += `
+        <p>${name}</p>
+        <p>${response["latin_name"]}</p>
+        `;
+
+      randomOutput.innerHTML = textBlock;
+    } else {
+      console.log("Not successful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+// fetchZooAnimals("https://zoo-animal-api.herokuapp.com/", "animals/rand");

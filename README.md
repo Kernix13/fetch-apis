@@ -29,7 +29,7 @@ Find APIs with simple (and **FREE**) endpoints, preferably without having to _si
    1. [**Open Food Facts**](https://world.openfoodfacts.org/data): Data on food products
    1. [Open Library](https://openlibrary.org/developers/api): Information about books
    1. [Placekitten](http://placekitten.com/): Placeholder kitten images
-   1. [Universities List](): universities and their domain names
+   1. [Universities List](https://github.com/Hipo/university-domains-list): universities and their domain names
    1. [WordPress](https://developer.wordpress.org/rest-api/reference/): Public posts from any WordPress site
 1. [JSONPlaceholder](https://jsonplaceholder.typicode.com/) - Types: /posts, /comments, /albums, /photos, /todos, /users
 1. get your ip address - endpoint: https://api.ipify.org?format=json
@@ -62,7 +62,7 @@ I'm defining the url and other endpoint parameters as params and grouping simila
 
 1. Endpoint URL only (`fetchByUrl`)
 1. Endpoint URL with single type parameter (`fetchByType`)
-1. Endpoint URL with 2 or more parameters (`fetchByParams`)
+1. Endpoint URL with 3 parameters (`fetchByParams`)
 
 Here is the basic structure I have right now for each function in the scripts file:
 

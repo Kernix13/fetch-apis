@@ -17,10 +17,10 @@ Table breakdown (Work-In-Progress): Animals (8) | Books (5) | ?-? = Business | ?
 | 2. Dog Facts    | Random facts              |  Yes  | _Yes_ |  2   |
 | 3. Dog CEO      | Stanford Dogs Dataset     |  Yes  | _Yes_ |  3   |
 | 4. MeowFacts    | Random cat facts          |  Yes  |  No   |  3   |
-| 5. PlaceBear    | Bear placeholder pics     |  Yes  |  Yes  |  3   |
-| 6. PlaceDog     | Dog placeholder pics      |  Yes  |  Yes  |  3   |
-| 7. PlaceKitten  | Kitten placeholder pics   |  Yes  |  Yes  |  3   |
-| 8. Zoo Animals  | Zoo animals facts, pics   |  Yes  |  Yes  |  3   |
+| 5. PlaceBear    | Bear placeholder pics     |  Yes  |  Yes  |  2   |
+| 6. PlaceDog     | Dog placeholder pics      |  Yes  |  Yes  |  2   |
+| 7. PlaceKitten  | Kitten placeholder pics   |  Yes  |  Yes  |  2   |
+| 8. Zoo Animals  | Zoo animals facts, pics   |  Yes  |  Yes  |  2   |
 | **BOOKS**       | -                         |   -   |   -   |  -   |
 | 1. Gutendex     | Project Gutenberg Library |  Yes  |  No   |  ?   |
 | 2. Open Library | ???                       |  Yes  |  No   |  ?   |
@@ -33,8 +33,8 @@ Table breakdown (Work-In-Progress): Animals (8) | Books (5) | ?-? = Business | ?
 Links and basic structure:
 
 1. [cat-facts](https://alexwohlbruck.github.io/cat-facts/docs/) | Base url & endpoint = `https://cat-fact.herokuapp.com` | Endpoint(s) = `/facts` | sign-up may be required
-1. [Dog API](https://kinduff.github.io/dog-api/) | Base url = `http://dog-api.kinduff.com` | Path = `/api/facts` | Param = `?number=5`
-1. [Dog API 2](https://dog.ceo/dog-api/) | Base URL = `https://dog.ceo/dog-api/` | Parameters: `breeds/list/all`, `breeds/image/random` | options examples: `breed/hound/images`, `breed/hound/list` | Browse breed list example: `https://dog.ceo/api/breed/${breedName}/images/random`
+1. [Dog Facts](https://kinduff.github.io/dog-api/) | Base url = `http://dog-api.kinduff.com` | Path = `/api/facts` | Param = `?number=5`
+1. [Dog CEO](https://dog.ceo/dog-api/) | Base URL = `https://dog.ceo/dog-api/` | Parameters: `breeds/list/all`, `breeds/image/random` | options examples: `breed/hound/images`, `breed/hound/list` | Browse breed list example: `https://dog.ceo/api/breed/${breedName}/images/random`
 1. [MeowFacts](https://github.com/wh-iterabb-it/meowfacts) | URL = `https://meowfacts.herokuapp.com/` | Params example for 3 facts = `?count=3`, specific fact = `?id=3`
 1. [PlaceBear](https://placebear.com/) | Base URL = `https://placebear.com/` | Params are width and height: `200/300` or `g/200/300`, no clue what the `g` is for.
 1. [PlaceDog](https://place.dog/) | Base URL = `https://place.dog/` | Params are width and height: `200/300`
