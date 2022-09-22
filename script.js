@@ -25,7 +25,7 @@ async function fetchByUrl(url) {
 //   console.log(data.places[0].latitude, data.places[0].longitude, data.places[0]["place name"]);
 // });
 
-// fetchByUrl("https://cat-fact.herokuapp.com/facts");
+fetchByUrl("https://gutendex.com/books");
 
 /* 2. More common type: endpoint as parameter */
 
@@ -183,118 +183,13 @@ async function addPost(e) {
   }
 }
 
-async function fetchImagesByParams(url, cat, subcat) {
-  try {
-    // await the fetch request
-    const response = await fetch(`${url}${cat}${subcat}`);
-    // console.log(response);
-    if (response.ok) {
-      // await the response from the fetch request
-      const data = await response.json();
-      console.log(data);
-      let imagesBlock = `<h3>${cat.toUpperCase().slice(1)} IMAGES</h3>`;
-      data.message.slice(0, 4).forEach(image => {
-        imagesBlock += `
-        <img src="${image}" />
-        `;
-      });
-      randomOutput.innerHTML = imagesBlock;
-      // return data;
-    } else {
-      console.log("Not sucessful");
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
-// fetchImagesByParams("https://dog.ceo/api/breed", "/hound", "/images");
-
-async function fetchTextByType(url, type) {
-  try {
-    const response = await fetch(`${url}${type}`);
-    // console.log(response);
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      let textBlock = `<h3>${data.data.length} Cat Facts</h3>`;
-      data.data.forEach(text => {
-        textBlock += `
-        <p>${text}</p>
-        `;
-      });
-      randomOutput.innerHTML = textBlock;
-    } else {
-      console.log("Not successful");
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
-// fetchTextByType("https://zoo-animal-api.herokuapp.com/", "animals/rand");
-// fetchTextByType("https://meowfacts.herokuapp.com/", "?count=3");
-
-async function fetchMeowFacts(url, type) {
-  try {
-    const response = await fetch(`${url}${type}`);
-    console.log(response);
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      // let textBlock = `<h3>${data.data.length} Cat Facts</h3>`;
-      // data.data.forEach(text => {
-      //   textBlock += `
-      //   <p>${text}</p>
-      //   `;
-      // });
-      // randomOutput.innerHTML = textBlock;
-    } else {
-      console.log("Not successful");
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
-// fetchMeowFacts("http://dog-api.kinduff.com", "/api/facts");
-async function dogFacts(url, cat, subcat) {
-  try {
-    const response = await fetch(`${url}${cat}${subcat}`);
-    console.log(response);
-    if (response.ok) {
-      const data = await response.text();
-      console.log(data);
-      return data;
-    } else {
-      console.log("Not sucessful");
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
-// dogFacts("http://dog-api.kinduff.com", "/api/facts", "?number=1");
-
-// async function dogFacts(url, cat, subcat) {
-//   try {
-//     const response = await fetch(`${url}${cat}${subcat}`);
-//     console.log(response);
-//     if (response.ok) {
-//       const data = await response.json();
-//       console.log(data);
-//       return data;
-//     } else {
-//       console.log("Not sucessful");
-//     }
-//   } catch (err) {
-//     console.error(err);
-//   }
-// }
-// dogFacts("http://dog-api.kinduff.com", "/api/facts", "?number=5");
-
 async function fetchPlaceKitten(url, type) {
   try {
     const response = await fetch(`${url}${type}`);
+    console.log(response);
     if (response.ok) {
       const data = await response.blob();
-      console.log(data);
+      console.log(data); // Blob
       document.getElementById("fetch-image").src = URL.createObjectURL(data);
     } else {
       console.log("Not successful");
@@ -303,27 +198,4 @@ async function fetchPlaceKitten(url, type) {
     console.error(err);
   }
 }
-fetchPlaceKitten("https://placekitten.com/", "200/300");
-
-async function fetchZooAnimals(url, type) {
-  try {
-    const response = await fetch(`${url}${type}`);
-    console.log(response);
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      let textBlock = `<h3>Random Zoo Animal</h3>`;
-      textBlock += `
-        <p>${name}</p>
-        <p>${response["latin_name"]}</p>
-        `;
-
-      randomOutput.innerHTML = textBlock;
-    } else {
-      console.log("Not successful");
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
-// fetchZooAnimals("https://zoo-animal-api.herokuapp.com/", "animals/rand");
+// fetchPlaceKitten("https://placekitten.com/", "g/200/300");

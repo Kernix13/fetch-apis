@@ -242,3 +242,46 @@ Charts: 1) Canvas API, 2) D3.js, 3) p5.js, 4) Chart.js
 - ISS API and use Leaflet to map it's location -
 
 https://www.youtube.com/playlist?list=PLRqwX-V7Uu6YxDKpFzf_2D84p0cyk4T7X
+
+## Async function
+
+From [MDN async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function):
+
+> An async function is a function declared with the async keyword, and the await keyword is permitted within it. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
+
+### Syntax
+
+I'm defining the url and other endpoint parameters as params and grouping similar APIs in the various types. Currently I have the following Fetch functions defined:
+
+1. Endpoint URL only (`fetchByUrl`)
+1. Endpoint URL with single type parameter (`fetchByType`)
+1. Endpoint URL with 3 parameters (`fetchByParams`)
+
+Here is the basic structure I have right now for each function in the scripts file:
+
+```js
+async function name(...params) {
+  try {
+    // await the fetch request
+    const result = await fetch(...params);
+    // await the response from the fetch request
+    const data = await result.json();
+
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+```
+
+I have no interest in using `Promise` or `.then()`.
+
+## Response json method
+
+From [MDN Response.json](https://developer.mozilla.org/en-US/docs/Web/API/Response/json):
+
+> The json() method of the Response interface takes a Response stream and reads it to completion. It returns a promise which resolves with the result of parsing the body text as JSON.
+
+From [MDN Response](https://developer.mozilla.org/en-US/docs/Web/API/Response):
+
+> The Response interface of the Fetch API represents the response to a request
