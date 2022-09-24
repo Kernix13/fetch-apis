@@ -22,7 +22,7 @@ getData();
 
 async function getData() {
   try {
-    const response = await fetch("ZonAnn.Ts+dSST.csv");
+    const response = await fetch("./data/ZonAnn.Ts+dSST.csv");
     if (response.ok) {
       const data = await response.text();
       const table = data.trim().split(/\n/).slice(1);

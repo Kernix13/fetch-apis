@@ -15,26 +15,26 @@ body {
   margin: 0 auto 5rem;
 }
 
-ul {
-  list-style: none;
+ul,
+ol {
   border: 1px solid #ccc;
   padding: 1em;
 }
 
-.indent1 {
+ol li {
   margin-left: 1em;
 }
-.indent2 {
-  margin-left: 2em;
-}
-.indent3 {
-  margin-left: 3em;
+
+ul {
+  list-style: none;
 }
 
-blockquote {
-  margin: 0;
-  padding: 1.5em;
-  border-left: 3px solid rgba(0, 0, 255, 0.535);
-  background-color: #f5f1f9;
-  font-style: italic;
+// .zoo2 {
+//   display: flex !important;
+// }
+
+.zoo-style {
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin: 0.5em 0;
 }

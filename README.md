@@ -4,8 +4,6 @@
 
 My notes and code examples for getting API data using async & await with the fetch API. I will add RESTful APIs including the WordPress REST API at a later date.
 
-I have function programming code examples for the various type of endpoints. Right now I am using `console.log()` for the data I fetch:
-
 > I love React for the ease of writing to the DOM, especially when you need to display lists!
 
 ## Files
@@ -15,4 +13,22 @@ I have function programming code examples for the various type of endpoints. Rig
 1. Both html files use a basic `style.css` sheet
 1. Practice files: 1. `sample.txt`, 2. `users.json`, 3. `ZonAnn.Ts+dSST.csv`
 1. `FETCH_NOTES.md`: notes of the Fetch API, Async/Await, and refactoring Fetch to Async/Await - from many sources
-1. `API_NOTES.md`: a breakdown on each API I worked with showing endpoints, parameters and the code blocks I used to fetch the data.
+1. `api-md-files` - markdown files for different categories of APIs and the code I used
+1. `THE_DOM.md` - notes on DOM manipulation
+
+Main source is the [Public APIS repo on GitHub](https://github.com/public-apis/public-apis).
+
+### Working APIS
+
+Animals
+
+1. Dog CEO - 1000's of image src strings inside `mesage`as an array
+1. MeowFacts - Set number of text strings inside `data` as an array
+1. PlaceKitten - `Blob` and returns a single image which you need to use as an image `src` value
+1. Zoo Animals - a single object with props
+
+Books
+
+1. Gutendex -
+
+> I could never account for all the diff prop names unless I can use a variable in the forEach loop which is defined somewhere else.
