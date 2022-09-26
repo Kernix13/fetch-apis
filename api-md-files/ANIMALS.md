@@ -1,4 +1,19 @@
-# Animal APIs
+# Animal
+
+> REWORK THE WORKING FUNCTIONS TO MAKE SURE i AM USING THE CORRECT ONE FOR THE OPTIONS
+
+### Working APIS
+
+Animals
+
+1. Dog CEO - 1000's of image src strings inside `mesage`as an array
+1. MeowFacts - Set number of text strings inside `data` as an array
+1. PlaceKitten - `Blob` and returns a single image which you need to use as an image `src` value
+1. Zoo Animals - a single object with props
+
+> I could never account for all the diff prop names unless I can use a variable in the forEach loop which is defined somewhere else. The different functions would just be used for variations for the same API.
+
+MeowFacts is the only interesting non-Auth API. The others that worked are just images.
 
 | API               | Descr                   | HTTPS | CORS  | Type |
 | :---------------- | :---------------------- | :---: | :---: | :--: |

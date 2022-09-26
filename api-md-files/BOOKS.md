@@ -55,6 +55,7 @@ async function fetchGutendex(url) {
 fetchGutendex("https://gutendex.com/books?search=dickens");
 // fetchGutendex("https://gutendex.com/books?languages=en");
 // fetchGutendex("https://gutendex.com/books?topic=fantasy");
+// NEED TO CHANGE TO THE 2, 3 OR MORE PARAM FUNCTION
 ```
 
 ## 11 Penguin Publishing
@@ -100,12 +101,16 @@ fetchPenguinPub("https://reststop.randomhouse.com/resources/authors?lastName=Gri
 
 ## 12 PoetryDB
 
+I didn't get blocked by CORS so I think that is wrong in the repo.
+
 1. [PoetryDB](https://github.com/thundercomb/poetrydb#readme): lines to a poem, text in json format, same breakdown like the NASA one,
    1. Base URL = `https://poetrydb.org`
    1. category params example = `/title<title>`
    1. subcategory params example = `Ozymandias` followed by `/lines.json`
 
 Where `<input field>` in the example above is `/title` and `<search term>` is `Ozymandias`. `<search term>` relates to `<input field>`.
+
+**WORKS!**
 
 - All input fields: author, title, lines, linecount, poemcount, random,
 - All search terms: When `<input field>` is:
@@ -119,7 +124,50 @@ poemcount: <field data> is the number of poems to return
 random: <field data> is the number of random poems to return
 ```
 
-`/<input field>/<search term>[;<search term>][..][:<search type>][/<output field>][,<output field>][..][.<format>]`
+This doc README is confusing. I searched for `Ozymandias` and here is everything I found that works:
+
+```js
+// returns the lines, NOTE so does /lines without .json
+fetchPoetryDB("https://poetrydb.org/title/Ozymandias/lines.json");
+// returns the author, title, and lines
+fetchPoetryDB("https://poetrydb.org/title/Ozymandias/author,title,lines");
+```
+
+Using `lines.text` returns the lines as text so use `resonse.text()`, but there are a lot of options and variations.
+
+Here is the code I used:
+
+```js
+const poetryDB = document.getElementById("poetrydb");
+async function fetchPoetryDB(url) {
+  try {
+    // await the fetch request
+    const response = await fetch(url);
+    // await the response from the fetch request
+    if (response.ok) {
+      console.log(response);
+      const data = await response.json();
+      let textBlock = `
+        <h3>${data[0].author}</h3>
+        <p class="italic">${data[0].title}</P>
+      `;
+      data[0].lines.forEach(line => {
+        textBlock += `<p>${line}</P>`;
+      });
+      console.log(data);
+      poetryDB.innerHTML = textBlock;
+      // return data;
+    } else {
+      console.log("Not successful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+fetchPoetryDB("https://poetrydb.org/title/Ozymandias/author,title,lines");
+// fetchPoetryDB("https://poetrydb.org/title/Ozymandias/lines");
+// NEED TO CHANGE TO THE 2, 3 OR MORE PARAM FUNCTION
+```
 
 > left off at https://github.com/thundercomb/poetrydb#api-reference
 
@@ -143,7 +191,20 @@ random: <field data> is the number of random poems to return
 ## Dictionaries no auth
 
 1. [Free Dictionary API](https://dictionaryapi.dev/)
+
+   1. Base URL = `https://api.dictionaryapi.dev/api/v2/entries/en`
+   1. param = `<word>`
+
+> Getting a response but not the data???
+
+Here is the code I used:
+
+```js
+// NEED TO CHANGE TO THE 2, 3 OR MORE PARAM FUNCTION
+```
+
 1. [Open Library](https://openlibrary.org/developers/api): Information about books
+   1. Base URL = ``
 
 ## Dictionaries auth
 

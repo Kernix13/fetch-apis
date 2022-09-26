@@ -18,17 +18,73 @@ My notes and code examples for getting API data using async & await with the fet
 
 Main source is the [Public APIS repo on GitHub](https://github.com/public-apis/public-apis).
 
-### Working APIS
+## Fetch Functions
 
-Animals
+I have 2 basic functions, though the second one can vary depending upon the endpoint options. The first takes a single parameter representing the URL endpoint:
 
-1. Dog CEO - 1000's of image src strings inside `mesage`as an array
-1. MeowFacts - Set number of text strings inside `data` as an array
-1. PlaceKitten - `Blob` and returns a single image which you need to use as an image `src` value
-1. Zoo Animals - a single object with props
+```js
+/* 1. For simple url endpoints */
+async function fetchByUrl(url) {
+  try {
+    const response = await fetch(url);
 
-Books
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      // Code to output data to the DOM goes here
+      // return data;
+    } else {
+      console.log("Not successful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+fetchByUrl("https://api.dictionaryapi.dev/api/v2/entries/en/hello");
+```
 
-1. Gutendex -
+A more common API has options for different endpoints, so the following function takes 2 parameters, 1 for the base URL and the 2nd for the endpoint options:
 
-> I could never account for all the diff prop names unless I can use a variable in the forEach loop which is defined somewhere else.
+```js
+/* 2. More common type: endpoint with 2nd parameter for an option */
+async function fetchByType(url, type) {
+  try {
+    const response = await fetch(`${url}${type}`);
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      // Code to output data to the DOM goes here
+      // return data;
+    } else {
+      console.log("Not successful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+fetchByType("http://api.zippopotam.us/us/", "19064");
+```
+
+And of course, you can add additonal parameters for more comples endpoints. This would work best for APIs that have a lot of options for their date. Here is a function with 3 parameters:
+
+```js
+/* 3. With 3 parameters */
+async function fetchByParams(url, cat, subcat) {
+  try {
+    const response = await fetch(`${url}${cat}${subcat}`);
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      // Code to output data to the DOM goes here
+      // return data;
+    } else {
+      console.log("Not sucessful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+fetchByParams("https://dog.ceo/api/breed", "/hound", "/images");
+```
