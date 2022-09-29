@@ -110,15 +110,15 @@ async function addPost(e) {
 
 // Dog-CEO
 const dogCEO = document.getElementById("dog-ceo");
-async function fetchDogCeo(url, cat, subcat) {
+async function fetchDogCeo(baseUrl, option1, option2, option3) {
   try {
-    const response = await fetch(`${url}${cat}${subcat}`);
+    const response = await fetch(`${baseUrl}${option1}${option2}${option3}`);
 
     if (response.ok) {
       const data = await response.json();
       console.log(data);
 
-      let imagesBlock = `<h3>DOG-CEO: ${cat.toUpperCase().slice(1)} IMAGES</h3>`;
+      let imagesBlock = `<h3>DOG-CEO: ${option2.toUpperCase().slice(1)} IMAGES</h3>`;
       data.message.slice(5, 10).forEach(image => {
         imagesBlock += `
         <img src="${image}" width="200" />
@@ -133,7 +133,7 @@ async function fetchDogCeo(url, cat, subcat) {
     console.error(err);
   }
 }
-fetchDogCeo("https://dog.ceo/api/breed", "/akita", "/images");
+fetchDogCeo("https://dog.ceo/api/", "breed", "/akita", "/images");
 
 // MeowFacts
 const meowFacts = document.getElementById("meow-facts");
@@ -142,6 +142,7 @@ async function fetchMeowFacts(url, type) {
     const response = await fetch(`${url}${type}`);
     if (response.ok) {
       const data = await response.json();
+
       let textBlock = `<h3>${data.data.length} Cat Facts</h3>`;
       data.data.forEach(text => {
         textBlock += `
@@ -159,6 +160,7 @@ async function fetchMeowFacts(url, type) {
 fetchMeowFacts("https://meowfacts.herokuapp.com/", "?count=3");
 
 // PlaceKitten
+const placeKitten = document.getElementById("place-kitten");
 async function fetchPlaceKitten(url, type) {
   try {
     const response = await fetch(`${url}${type}`);
@@ -166,7 +168,7 @@ async function fetchPlaceKitten(url, type) {
     if (response.ok) {
       const data = await response.blob();
       console.log(data); // Blob
-      document.getElementById("place-kitten").src = URL.createObjectURL(data);
+      placeKitten.src = URL.createObjectURL(data);
     } else {
       console.log("Not successful");
     }
@@ -178,15 +180,15 @@ fetchPlaceKitten("https://placekitten.com/", "200/300");
 
 // Zoo Animals
 const zoo = document.getElementById("zoo");
-async function fetchZooAnimal(url, type) {
+async function fetchZooAnimal(url) {
   try {
-    const response = await fetch(`${url}${type}`);
+    const response = await fetch(`${url}`);
 
     console.log(response);
     if (response.ok) {
       const data = await response.json();
       console.log(data);
-      let textBlock = `<h3>Random Zoo Animals</h3>`;
+      let textBlock = `<h3>Random Zoo Animal</h3>`;
       textBlock += `
         <h4>${data.name} (${data.latin_name})</h4>
         <p>Type: ${data.animal_type}</p>
@@ -201,18 +203,18 @@ async function fetchZooAnimal(url, type) {
     console.error(err);
   }
 }
-fetchZooAnimal("https://zoo-animal-api.herokuapp.com/", "animals/rand");
+fetchZooAnimal("https://zoo-animal-api.herokuapp.com/animals/rand");
 
 // Zoo2
 const zoo2 = document.getElementById("zoo2");
-async function fetchZooAnimals(url, type) {
+async function fetchZooAnimals(baseUrl, value) {
   try {
-    const response = await fetch(`${url}${type}`);
+    const response = await fetch(`${baseUrl}${value}`);
 
     if (response.ok) {
       const data = await response.json();
       console.log(data);
-      let textBlock = `<h3>${type.slice(type.length - 1)} Random Zoo Animals</h3>`;
+      let textBlock = `<h3>${value.slice(value.length - 1)} Random Zoo Animals</h3>`;
       data.forEach(animal => {
         textBlock += `
         <div class="zoo-style">
@@ -231,7 +233,9 @@ async function fetchZooAnimals(url, type) {
     console.error(err);
   }
 }
-fetchZooAnimals("https://zoo-animal-api.herokuapp.com/", "animals/rand/5");
+const num = `5`;
+// fetchZooAnimals("https://zoo-animal-api.herokuapp.com/animals", "/rand/5");
+fetchZooAnimal("https://zoo-animal-api.herokuapp.com/animals/rand", `/${num}`);
 
 // Gutendex
 const guten = document.getElementById("guten");

@@ -1,6 +1,6 @@
 # Various APIS
 
-= charts, universities, wordpress, news, social, sports, translations
+- charts, universities, wordpress, news, social, sports, translations
 
 ## Other sources
 

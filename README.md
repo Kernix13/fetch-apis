@@ -47,9 +47,9 @@ A more common API has options for different endpoints, so the following function
 
 ```js
 /* 2. More common type: endpoint with 2nd parameter for an option */
-async function fetchByType(url, type) {
+async function fetchByType(baseUrl, value) {
   try {
-    const response = await fetch(`${url}${type}`);
+    const response = await fetch(`${baseUrl}${value}`);
 
     if (response.ok) {
       const data = await response.json();
@@ -70,9 +70,9 @@ And of course, you can add additonal parameters for more comples endpoints. This
 
 ```js
 /* 3. With 3 parameters */
-async function fetchByParams(url, cat, subcat) {
+async function fetchByParams(baseUrl, option1, option2, option3) {
   try {
-    const response = await fetch(`${url}${cat}${subcat}`);
+    const response = await fetch(`${baseUrl}${optio1}${option2}${option3}`);
 
     if (response.ok) {
       const data = await response.json();
@@ -86,5 +86,5 @@ async function fetchByParams(url, cat, subcat) {
     console.error(err);
   }
 }
-fetchByParams("https://dog.ceo/api/breed", "/hound", "/images");
+fetchByParams("https://dog.ceo/api", "/breed", "/hound", "/images");
 ```

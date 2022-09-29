@@ -24,6 +24,8 @@
 
 **WORKS!**
 
+> NEED TO CHANGE TO A 3 PARAM FUNCTION
+
 Here is the code I used:
 
 ```js
@@ -55,51 +57,11 @@ async function fetchGutendex(url) {
 fetchGutendex("https://gutendex.com/books?search=dickens");
 // fetchGutendex("https://gutendex.com/books?languages=en");
 // fetchGutendex("https://gutendex.com/books?topic=fantasy");
-// NEED TO CHANGE TO THE 2, 3 OR MORE PARAM FUNCTION
 ```
 
-## 11 Penguin Publishing
+## 11 PoetryDB
 
-1. [Penguin Publishing](http://www.penguinrandomhouse.biz/webservices/rest/) | The Penguin Random House Rest Services can be used to get data about books, authors and events - return data in one of three formats depending on the content type that is supplied as part of the request: application/xml, application/json, image/\* - The image content type is only applicable to the /request/titles/ISBN resource as it will return the cover image
-   1. Base URL = `https://reststop.randomhouse.com`
-   1. Params = `/resources` with `/authors` or `/works` or `/titles` or `/titles/ISBN` or `/authorevents` or `/authorevents/EVENTID`
-   1. params2 examples = `/authors?lastName=Grisham`
-
-**ERROR**:
-
-> Access to fetch at 'https://reststop.randomhouse.com/resources/authors?lastName=Grisham' from origin 'http://127.0.0.1:5500' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
-
-So I added `mode: "no-cors",` and that error disappeared but but I got `response.ok: false`, can't seem to solve this...setting my local host in Access-Control-Allow-Origin did not work either. I found [Solving No Access-Control-Allow-Origin](https://www.endyourif.com/solving-no-access-control-allow-origin-with-node-js-and-express/)
-
-> And of course someone has built an [npm CORS](https://www.npmjs.com/package/cors) package if you prefer to not write your own to solve access-control-allow-origin javascript
-
-Here is the code I used:
-
-```js
-const penguin = document.getElementById("penguin");
-async function fetchPenguinPub(url) {
-  try {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-type": "application/json"
-      }
-    });
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-    } else {
-      console.log("Not successful");
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
-fetchPenguinPub("https://reststop.randomhouse.com/resources/authors?lastName=Grisham");
-```
-
-## 12 PoetryDB
+> NEED TO CHANGE TO A 3 PARAM FUNCTION
 
 I didn't get blocked by CORS so I think that is wrong in the repo.
 
@@ -171,23 +133,6 @@ fetchPoetryDB("https://poetrydb.org/title/Ozymandias/author,title,lines");
 
 > left off at https://github.com/thundercomb/poetrydb#api-reference
 
-## 13 Rig Veda
-
-1. [Rig Veda](https://aninditabasu.github.io/indica/html/rv.html):
-
-# Auth Key Required Free APIS
-
-| API                 | Descr                     |  Auth  | HTTPS | CORS |
-| :------------------ | :------------------------ | :----: | :---: | :--: |
-| **BOOKS**           | -                         |   -    |   -   |  -   |
-| 1. A Bíblia Digital | Bible                     | apiKey |  No   |  No  |
-| 2. Bhagavad Gita    | in Sanskrit/English/Hindi | OAuth  |  Yes  | Yes  |
-
-1. [A Bíblia Digital](https://www.abibliadigital.com.br/en)
-1. [Bhagavad Gita](https://bhagavadgita.io/api/)
-
-<br>
-
 ## Dictionaries no auth
 
 1. [Free Dictionary API](https://dictionaryapi.dev/)
@@ -206,6 +151,19 @@ Here is the code I used:
 1. [Open Library](https://openlibrary.org/developers/api): Information about books
    1. Base URL = ``
 
+## Auth Key Required Free APIS
+
+| API                 | Descr                     |  Auth  | HTTPS | CORS |
+| :------------------ | :------------------------ | :----: | :---: | :--: |
+| **BOOKS**           | -                         |   -    |   -   |  -   |
+| 1. A Bíblia Digital | Bible                     | apiKey |  No   |  No  |
+| 2. Bhagavad Gita    | in Sanskrit/English/Hindi | OAuth  |  Yes  | Yes  |
+
+1. [A Bíblia Digital](https://www.abibliadigital.com.br/en)
+1. [Bhagavad Gita](https://bhagavadgita.io/api/)
+
+<br>
+
 ## Dictionaries auth
 
 | API                | Descr |  Auth  | HTTPS | CORS |
@@ -222,3 +180,52 @@ Here is the code I used:
 1. [Merriam-Webster](https://dictionaryapi.com/) Dictionary and Thesaurus Data
 1. [Oxford](https://developer.oxforddictionaries.com/) Dictionary Data
 1. [Synonyms](https://www.synonyms.com/synonyms_api.php) Synonyms, thesaurus and antonyms information for any given word
+
+> THE FOLLOWING DID NOT WORK:
+
+## 11 Penguin Publishing
+
+1. [Penguin Publishing](http://www.penguinrandomhouse.biz/webservices/rest/) | The Penguin Random House Rest Services can be used to get data about books, authors and events - return data in one of three formats depending on the content type that is supplied as part of the request: application/xml, application/json, image/\* - The image content type is only applicable to the /request/titles/ISBN resource as it will return the cover image
+   1. Base URL = `https://reststop.randomhouse.com`
+   1. Params = `/resources` with `/authors` or `/works` or `/titles` or `/titles/ISBN` or `/authorevents` or `/authorevents/EVENTID`
+   1. params2 examples = `/authors?lastName=Grisham`
+
+**ERROR**:
+
+> Access to fetch at 'https://reststop.randomhouse.com/resources/authors?lastName=Grisham' from origin 'http://127.0.0.1:5500' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+
+So I added `mode: "no-cors",` and that error disappeared but but I got `response.ok: false`, can't seem to solve this...setting my local host in Access-Control-Allow-Origin did not work either. I found [Solving No Access-Control-Allow-Origin](https://www.endyourif.com/solving-no-access-control-allow-origin-with-node-js-and-express/)
+
+> And of course someone has built an [npm CORS](https://www.npmjs.com/package/cors) package if you prefer to not write your own to solve access-control-allow-origin javascript
+
+Here is the code I used:
+
+```js
+const penguin = document.getElementById("penguin");
+async function fetchPenguinPub(url) {
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-type": "application/json"
+      }
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    } else {
+      console.log("Not successful");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+fetchPenguinPub("https://reststop.randomhouse.com/resources/authors?lastName=Grisham");
+```
+
+## 13 Rig Veda
+
+1. [Rig Veda](https://aninditabasu.github.io/indica/html/rv.html):
+
+> The page you're looking for couldn't be found.
