@@ -42,3 +42,8 @@ ul {
 .italic {
   font-style: italic;
 }
+
+// Leaflet example
+#issMap {
+  height: 180px;
+}

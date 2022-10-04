@@ -239,7 +239,54 @@ Charts: 1) Canvas API, 2) D3.js, 3) p5.js, 4) Chart.js
 
 ### video 1.4: JSON
 
-- ISS API and use Leaflet to map it's location -
+- ISS API and use Leaflet to map it's location - you could also use Google Maps or MapBox
+- get lat & long and plot it on a map
+- https://wheretheiss.at/ and https://wheretheiss.at/w/developer
+
+#### JSON
+
+- https://api.wheretheiss.at/v1/satellites
+- id: 25544
+- https://api.wheretheiss.at/v1/satellites/25544
+
+### Video 1.5 Mapping Geolocation with Leaflet.js
+
+- go to the quick start guide - https://leafletjs.com/examples/quick-start/ or the docs https://leafletjs.com/reference.html
+- get the link, script and div tags and the css
+- I'm not getting the fucking map - he has an img to use as an icom for the marker -
+- there is a shitton of markup but no map
+
+### Video: Refreshing Data with setInterval
+
+- last video did not go well
+- how to have the lat and long update without having to reload the page -
+- also, have the marker load in the center of the map and zoomed in more - use setView in the fetch Fx
+- to update use the `setInterval` fx -
+- add toFixed() to the lat and long textContent values to decrease the number of decimal places
+
+```js
+// syntax
+setInterval(functionName, intervalAmount);
+setInterval(fetchISSLocation, 1000);
+```
+
+### Video: 2.1 Server-side with Node.js
+
+- just watched then
+- video: 2.2 Geolocation Web API - just watched then
+- video: 2.3 HTTP Post Request with fetch()
+- video: 2.4 Saving to a Database
+- video: 2.5 Database Query
+- video: 2.6 Saving Images and Base64 Encoding
+- video: 2.7 Project Wrap-up: Accessibility and Design
+
+### video: 3.1 API calls from Node.js (Weather data from Dark Sky)
+
+- eee
+
+#### video: 3.4 Hiding API Keys with Environment Variables (dotenv) and Pushing Code to GitHub
+
+- eee
 
 https://www.youtube.com/playlist?list=PLRqwX-V7Uu6YxDKpFzf_2D84p0cyk4T7X
 
