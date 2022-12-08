@@ -30,17 +30,17 @@ async function fetchByUrl(url) {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
-      // Code to output data to the DOM goes here
-      // return data;
+      console.log(data); // code for working with data here
+      return data;
     } else {
-      console.log("Not successful");
+      console.log('Not successful');
     }
   } catch (err) {
     console.error(err);
+    return err;
   }
 }
-fetchByUrl("https://api.dictionaryapi.dev/api/v2/entries/en/hello");
+fetchByUrl('https://api.dictionaryapi.dev/api/v2/entries/en/hello');
 ```
 
 A more common API has options for different endpoints, so the following function takes 2 parameters, 1 for the base URL and the 2nd for the endpoint options:
@@ -53,20 +53,20 @@ async function fetchByType(baseUrl, value) {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
-      // Code to output data to the DOM goes here
-      // return data;
+      console.log(data); // code for working with data here
+      return data;
     } else {
-      console.log("Not successful");
+      console.log('Not successful');
     }
   } catch (err) {
     console.error(err);
+    return err;
   }
 }
-fetchByType("http://api.zippopotam.us/us/", "19064");
+fetchByType('http://api.zippopotam.us/us/', '19064');
 ```
 
-And of course, you can add additonal parameters for more comples endpoints. This would work best for APIs that have a lot of options for their date. Here is a function with 3 parameters:
+And of course, you can add additonal parameters for more comples endpoints. This would work best for APIs that have a lot of options for their data. Here is a function with 3 parameters:
 
 ```js
 /* 3. With 3 parameters */
@@ -76,15 +76,17 @@ async function fetchByParams(baseUrl, option1, option2, option3) {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
-      // Code to output data to the DOM goes here
-      // return data;
+      console.log(data); // code for working with data here
+      return data;
     } else {
-      console.log("Not sucessful");
+      console.log('Not sucessful');
     }
   } catch (err) {
     console.error(err);
+    return err;
   }
 }
-fetchByParams("https://dog.ceo/api", "/breed", "/hound", "/images");
+fetchByParams('https://dog.ceo/api', '/breed', '/hound', '/images');
 ```
+
+Look into `Promise.allSettled()` or just `allSettled()`.
