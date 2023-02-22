@@ -94,7 +94,7 @@ async function addPost(e) {
       },
       body: JSON.stringify({ title: title, body: body })
     });
-    console.log(response);
+    // console.log(response);
     if (response.ok) {
       const data = await response.json();
       console.log(data);
@@ -164,7 +164,7 @@ const placeKitten = document.getElementById("place-kitten");
 async function fetchPlaceKitten(url, type) {
   try {
     const response = await fetch(`${url}${type}`);
-    console.log(response);
+    // console.log(response);
     if (response.ok) {
       const data = await response.blob();
       console.log(data); // Blob
@@ -184,7 +184,11 @@ async function fetchZooAnimal(url) {
   try {
     const response = await fetch(`${url}`);
 
-    console.log(response);
+    if (!response.ok) {
+      // console.log(response);
+      throw new Error(response.status)
+    }
+
     if (response.ok) {
       const data = await response.json();
       console.log(data);
@@ -200,10 +204,10 @@ async function fetchZooAnimal(url) {
       console.log("Not successful");
     }
   } catch (err) {
-    console.error(err);
+    console.warn(err);
   }
 }
-fetchZooAnimal("https://zoo-animal-api.herokuapp.com/animals/rand");
+// fetchZooAnimal("https://zoo-animal-api.herokuapp.com/animals/rand");
 
 // Zoo2
 const zoo2 = document.getElementById("zoo2");
@@ -235,7 +239,7 @@ async function fetchZooAnimals(baseUrl, value) {
 }
 const num = `5`;
 // fetchZooAnimals("https://zoo-animal-api.herokuapp.com/animals", "/rand/5");
-fetchZooAnimal("https://zoo-animal-api.herokuapp.com/animals/rand", `/${num}`);
+// fetchZooAnimal("https://zoo-animal-api.herokuapp.com/animals/rand", `/${num}`);
 
 // Gutendex
 const guten = document.getElementById("guten");
@@ -277,7 +281,7 @@ async function fetchPoetryDB(url) {
     const response = await fetch(url);
     // await the response from the fetch request
     if (response.ok) {
-      console.log(response);
+      // console.log(response);
       const data = await response.json();
       let textBlock = `
         <h3>${data[0].author}</h3>
@@ -302,7 +306,7 @@ fetchPoetryDB("https://poetrydb.org/title/Ozymandias/author,title,lines");
 async function fetchByType(url, type) {
   try {
     const response = await fetch(`${url}${type}`);
-    console.log(response);
+    // console.log(response);
     if (response.ok) {
       const data = await response.json();
       console.log(data);

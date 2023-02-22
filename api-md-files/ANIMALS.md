@@ -46,7 +46,7 @@ MeowFacts is the only interesting non-Auth API. The others that worked are just 
 Used the following code to output the 1st four images because there are a 1000 images. I would have to add that option as a parameter. Here is the code I used:
 
 ```js
-const dogCEO = document.getElementById("dog-ceo");
+const dogCEO = document.getElementById('dog-ceo');
 async function fetchDogCeo(baseUrl, option1, option2, option3) {
   try {
     const response = await fetch(`${baseUrl}${option1}${option2}${option3}`);
@@ -55,7 +55,9 @@ async function fetchDogCeo(baseUrl, option1, option2, option3) {
       const data = await response.json();
       console.log(data);
 
-      let imagesBlock = `<h3>DOG-CEO: ${option2.toUpperCase().slice(1)} IMAGES</h3>`;
+      let imagesBlock = `<h3>DOG-CEO: ${option2
+        .toUpperCase()
+        .slice(1)} IMAGES</h3>`;
       data.message.slice(5, 10).forEach(image => {
         imagesBlock += `
         <img src="${image}" width="200" />
@@ -64,13 +66,13 @@ async function fetchDogCeo(baseUrl, option1, option2, option3) {
       dogCEO.innerHTML = imagesBlock;
       // return data;
     } else {
-      console.log("Not sucessful");
+      console.log('Not sucessful');
     }
   } catch (err) {
     console.error(err);
   }
 }
-fetchDogCeo("https://dog.ceo/api/", "breed", "/akita", "/images");
+fetchDogCeo('https://dog.ceo/api/', 'breed', '/akita', '/images');
 ```
 
 I tried to randomize the values in `slice()` but it did not output images onto the page:
@@ -113,7 +115,7 @@ I got it to work but I had a number of issues?!?
 Hard coded the # of facts and the response is in an object named `data` with the text fields in an array. Here is the code I used:
 
 ```js
-const meowFacts = document.getElementById("meow-facts");
+const meowFacts = document.getElementById('meow-facts');
 async function fetchMeowFacts(url, type) {
   try {
     const response = await fetch(`${url}${type}`);
@@ -127,13 +129,13 @@ async function fetchMeowFacts(url, type) {
       });
       meowFacts.innerHTML = textBlock;
     } else {
-      console.log("Not successful");
+      console.log('Not successful');
     }
   } catch (err) {
     console.error(err);
   }
 }
-fetchMeowFacts("https://meowfacts.herokuapp.com/", "?count=3");
+fetchMeowFacts('https://meowfacts.herokuapp.com/', '?count=3');
 ```
 
 I'm doing something wrong because I can't get the following to work:
@@ -141,7 +143,7 @@ I'm doing something wrong because I can't get the following to work:
 ```js
 let textBlock = `<h3>${data.data.length} Cat Facts</h3>`;
 data.data.forEach(text => {
-  let li = document.createElement("li");
+  let li = document.createElement('li');
   textBlock += li;
   li.innerText(text); // same with textContent
 });
@@ -158,7 +160,7 @@ meowFacts.append(textBlock);
 **WORKS!** Here is the code I used:
 
 ```js
-const placeKitten = document.getElementById("place-kitten");
+const placeKitten = document.getElementById('place-kitten');
 async function fetchPlaceKitten(url, type) {
   try {
     const response = await fetch(`${url}${type}`);
@@ -168,13 +170,13 @@ async function fetchPlaceKitten(url, type) {
       console.log(data); // Blob
       placeKitten.src = URL.createObjectURL(data);
     } else {
-      console.log("Not successful");
+      console.log('Not successful');
     }
   } catch (err) {
     console.error(err);
   }
 }
-fetchPlaceKitten("https://placekitten.com/", "200/300");
+fetchPlaceKitten('https://placekitten.com/', '200/300');
 // fetchPlaceKitten("https://placekitten.com/", "g/200/300");
 ```
 
@@ -186,13 +188,13 @@ No need to chnage the way the image is outputting to the DOM
    1. Base URL = `https://zoo-animal-api.herokuapp.com/` |
    1. Params = `animals/rand` or `animals/rand/{number}` where number is from 1 to 10
 
-**WORKS!**
+> CORS error - no longer working
 
 Here is the code I used:
 
 ```js
 // Single random object with 10+ properties.
-const zoo = document.getElementById("zoo");
+const zoo = document.getElementById('zoo');
 async function fetchZooAnimal(url) {
   try {
     const response = await fetch(`${url}`);
@@ -210,16 +212,16 @@ async function fetchZooAnimal(url) {
         `;
       zoo.innerHTML = textBlock;
     } else {
-      console.log("Not successful");
+      console.log('Not successful');
     }
   } catch (err) {
     console.error(err);
   }
 }
-fetchZooAnimal("https://zoo-animal-api.herokuapp.com/animals/rand");
+fetchZooAnimal('https://zoo-animal-api.herokuapp.com/animals/rand');
 
 // Zoo2 with a number param added
-const zoo2 = document.getElementById("zoo2");
+const zoo2 = document.getElementById('zoo2');
 async function fetchZooAnimals(baseUrl, value) {
   try {
     const response = await fetch(`${baseUrl}${value}`);
@@ -227,7 +229,9 @@ async function fetchZooAnimals(baseUrl, value) {
     if (response.ok) {
       const data = await response.json();
       console.log(data);
-      let textBlock = `<h3>${value.slice(value.length - 1)} Random Zoo Animals</h3>`;
+      let textBlock = `<h3>${value.slice(
+        value.length - 1
+      )} Random Zoo Animals</h3>`;
       data.forEach(animal => {
         textBlock += `
         <div class="zoo-style">
@@ -240,7 +244,7 @@ async function fetchZooAnimals(baseUrl, value) {
       });
       zoo2.innerHTML = textBlock;
     } else {
-      console.log("Not successful");
+      console.log('Not successful');
     }
   } catch (err) {
     console.error(err);
@@ -248,9 +252,9 @@ async function fetchZooAnimals(baseUrl, value) {
 }
 //
 const num = `5`;
-fetchZooAnimals("https://zoo-animal-api.herokuapp.com/animals", "/rand/5");
+fetchZooAnimals('https://zoo-animal-api.herokuapp.com/animals', '/rand/5');
 // fetchZooAnimal("https://zoo-animal-api.herokuapp.com/animals/rand", "/5");
-fetchZooAnimal("https://zoo-animal-api.herokuapp.com/animals/rand", `/${num}`);
+fetchZooAnimal('https://zoo-animal-api.herokuapp.com/animals/rand', `/${num}`);
 ```
 
 I couldn't use the function with a 2nd param: `fetchZooAnimal(baseUrl, value)`. I don't know why that did not work. I tried both `5` and `"5"` as the final param. Although this worked: `fetchZooAnimals("https://zoo-animal-api.herokuapp.com/animals", "/rand/5")` but that is not the correct endpoint structure. Why doesn't it work with just `5` or `/5`?
@@ -306,13 +310,13 @@ async function fetchMeowFacts(url, type) {
       });
       randomOutput.innerHTML = textBlock;
     } else {
-      console.log("Not successful");
+      console.log('Not successful');
     }
   } catch (err) {
     console.error(err);
   }
 }
-fetchMeowFacts("https://cat-fact.herokuapp.com", "/facts");
+fetchMeowFacts('https://cat-fact.herokuapp.com', '/facts');
 ```
 
 There is a base url link below but with a different end parameter that works - AND - a different GitHub link??? This one is all messed up!
@@ -333,7 +337,7 @@ There is a base url link below but with a different end parameter that works - A
 Here is the code I used:
 
 ```js
-const url = "";
+const url = '';
 
 async function dogFacts(url, cat, subcat) {
   try {
@@ -344,13 +348,13 @@ async function dogFacts(url, cat, subcat) {
       console.log(data);
       return data;
     } else {
-      console.log("Not sucessful");
+      console.log('Not sucessful');
     }
   } catch (err) {
     console.error(err);
   }
 }
-dogFacts("http://dog-api.kinduff.com", "/api/facts", "?number=5");
+dogFacts('http://dog-api.kinduff.com', '/api/facts', '?number=5');
 ```
 
 ### 7 PlaceBear and 8 PlaceDog
@@ -382,13 +386,13 @@ async function fetchPlaceBear(url, type) {
       const data = await response.json();
       console.log(data);
     } else {
-      console.log("Not successful");
+      console.log('Not successful');
     }
   } catch (err) {
     console.error(err);
   }
 }
-fetchPlaceBear("https://placebear.com/", "200/300");
+fetchPlaceBear('https://placebear.com/', '200/300');
 
 // PlaceDog
 async function fetchPlaceDog(url, type) {
@@ -399,13 +403,13 @@ async function fetchPlaceDog(url, type) {
       const data = await response.json();
       console.log(data);
     } else {
-      console.log("Not successful");
+      console.log('Not successful');
     }
   } catch (err) {
     console.error(err);
   }
 }
-fetchPlaceDog("https://place.dog/", "200/300");
+fetchPlaceDog('https://place.dog/', '200/300');
 ```
 
 - `createElement('HTMLElement')`, `createElement()` – creates a new HTML element within the DOM. The return value is the newly created element - creates a new element while manipulating elements - createElement used with append - Note that doing so creates the element, but does not place it on the page. For this, one of the methods for adding an element in the DOM should be used after creating the element
@@ -413,16 +417,16 @@ fetchPlaceDog("https://place.dog/", "200/300");
 
 ```js
 const body = document.body;
-const div = document.createElement("div");
+const div = document.createElement('div');
 // div.innerText("Hello);
-div.textContent("Hello");
+div.textContent('Hello');
 body.append(div);
 
 // innerHTML example
-div.innerText = "<strong>Hello</strong";
+div.innerText = '<strong>Hello</strong';
 // Do this instead
-const strong = document.createElement("strong");
-strong.innerText("Hello");
+const strong = document.createElement('strong');
+strong.innerText('Hello');
 div.append(strong);
 ```
 
@@ -436,7 +440,7 @@ Syntax: `document.createElement(tagName[, options])`
 - `options`: An optional parameter that enables us to set an “is” attribute when adding an element.
 
 ```js
-let div = document.createElement("div");
+let div = document.createElement('div');
 div.textContent = "Hello, I'm new here."; // or
 div.innerText = "Hello, I'm new here.";
 ```

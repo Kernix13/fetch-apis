@@ -66,6 +66,33 @@ async function fetchByType(baseUrl, value) {
 fetchByType('http://api.zippopotam.us/us/', '19064');
 ```
 
+Or this may be better plus a better error catching:
+
+```js
+const BASEURL = 'https://dummyjson.com';
+async function customFetch(endpoint) {
+  try {
+    const response = await fetch(`${BASEURL}/${endpoint}`);
+
+    if (!response.ok) {
+      throw new Error(response.status, response.statusText);
+      console.log(response);
+    }
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } else {
+      console.log('Not successful');
+    }
+  } catch (err) {
+    console.error(err);
+    return err;
+  }
+}
+customFetch(BASEURL, '/products');
+```
+
 And of course, you can add additonal parameters for more comples endpoints. This would work best for APIs that have a lot of options for their data. Here is a function with 3 parameters:
 
 ```js
