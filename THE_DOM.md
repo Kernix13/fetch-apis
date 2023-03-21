@@ -4,18 +4,18 @@
 
 My CodePen pens: innerText examples, textContent examples, appendChild examples, innerAdjacentHTML examples, DOM innerHTML examples
 
-> excellent code blocks: https://www.theodinproject.com/lessons/foundations-dom-manipulation-and-events
-
 <a id="back-to-top"></a>
 
 ## Table of contents
 
-1. [MDN Document Object Model](#mdn-document-object-model)
-1. [HTML DOM](#html-dom)
-1. [SVG interfaces](#svg-interfaces)
-1. [MDN Manipulating documents](#mdn-manipulating-documents)
-1. [Document interface](#document-interface)
-1. [The document object model](#the-document-object-model)
+1. [Web APIs](#web-apis)
+1. [The Document Object Model](#the-document-object-model)
+   1. [HTML DOM](#html-dom)
+   1. [DOM interfaces](#dom-interfaces)
+   1. [SVG interfaces](#svg-interfaces)
+   1. [Introduction to the DOM](#introduction-to-the-dom)
+1. [Manipulating documents](#manipulating-documents)
+1. [Document](#document)
 1. [Dom Manipulation Methods](#dom-manipulation-methods)
 1. [Targeting Nodes](#targeting-nodes)
 1. [1 Creating a new element](#1-creating-a-new-element)
@@ -26,7 +26,7 @@ My CodePen pens: innerText examples, textContent examples, appendChild examples,
 1. [6 Also](#6-also)
 1. [Terms](#terms)
 1. [1 TARGETING NODES](#1-targeting-nodes)
-1. [17 DOM Manipulation Methods](#17-dom-manipulation-methods)
+1. [DOM Manipulation Methods](#17-dom-manipulation-methods)
 1. [The DOM](#the-dom)
 1. [Creating Elements in the DOM](#creating-elements-in-the-dom)
 1. [Adding Elements to the DOM](#adding-elements-to-the-dom)
@@ -34,51 +34,40 @@ My CodePen pens: innerText examples, textContent examples, appendChild examples,
 1. [Removing Elements from the DOM](#removing-elements-from-the-dom)
 1. [HTMLElement](#htmlelement)
 1. [important JS properties and methods](#important-js-properties-and-methods)
+1. [Miscellaneous](#miscellaneous)
 
-<h3 id="mdn-document-object-model" align="center"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"><strong>MDN Document Object Model</strong></a>
-</h3>
+## Web APIs
 
-Also check out [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API): such as Clipboard API, Fetch API, File API, Fullscreen API, Geolocation API, History API, Keyboard API, Performance API, Permission API, Screen Capture API, Selection API, URL API, Web Audio API, Web Speech API, Web Storage AP
+[Web APIs](https://developer.mozilla.org/en-US/docs/Web/API) such as these which I have either worked with or want to use:
 
-## Document Object Model (DOM)
+- [Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API): the ability to respond to clipboard commands (cut, copy, and paste) as well as to asynchronously read from and write to the system clipboard
+- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API): provides an interface for fetching resources (including across the network)
+- [File API](https://developer.mozilla.org/en-US/docs/Web/API/File_API): enables web applications to access files and their contents - Web applications can access files when the user makes them available, either using a file `<input>` element or via drag and drop
+- [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API): adds methods to present a specific Element (and its descendants) in fullscreen mode, and to exit fullscreen mode once it is no longer needed
+- [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API): allows the user to provide their location to web applications if they so desire. For privacy reasons, the user is asked for permission to report location information
+- [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API): provides access to the browser's session history
+- [Keyboard API](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard_API): _experimental_, provides methods for working with a physical keyboard that is attached to a device running a browser
+- [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API): a group of standards used to measure the performance of web applications
+- [Permissions API](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API): provides a consistent programmatic way to query the status of API permissions attributed to the current context, can be used to determine if permission to access a particular API has been granted or denied
+- [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API): introduces additions to the existing Media Capture and Streams API to let the user select a screen or portion of a screen (such as a window) to capture as a media stream. This stream can then be recorded or shared with others over the network
+- [Selection API](https://developer.mozilla.org/en-US/docs/Web/API/Selection_API): enables developers to access and manipulate the portion of a document selected by the user
+- [URL API](https://developer.mozilla.org/en-US/docs/Web/API/URL_API): The URL standard also defines concepts such as domains, hosts, and IP addresses
+- [Visual Viewport API](https://developer.mozilla.org/en-US/docs/Web/API/Visual_Viewport_API): provides an explicit mechanism for querying and modifying the properties of the window's visual viewport
+- [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API): provides a powerful and versatile system for controlling audio on the Web, allowing developers to choose audio sources, add effects to audio, create audio visualizations, apply spatial effects (such as panning) and much more
+- [Web Notifications API](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API): allows web pages to control the display of system notifications to the end user
+- [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API): enables you to incorporate voice data into web apps
+- [Web Storage AP](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API): provides mechanisms by which browsers can store key/value pairs, in a much more intuitive fashion than using cookies
+- [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API): a JavaScript API for rendering high-performance interactive 3D and 2D graphics within any compatible web browser without the use of plug-ins
+- [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest): XHR objects are used to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing
+- Also look into _UI Events_, _Touch events_, _Push API_, _IndexedDB API_, _HTML DOM API_, _Geometry interfaces_, ...
 
+## The Document Object Model
+
+Check out: [MDN Document Object Model](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+
+- The Document Object Model (DOM) connects web pages to scripts or programming languages by representing the structure of a document—such as the HTML representing a web page—in memory. Usually it refers to JavaScript, even though modeling HTML, SVG, or XML documents as objects are not part of the core JavaScript language
 - The DOM represents a document with a logical tree. Each branch of the tree ends in a node, and each node contains objects. DOM methods allow programmatic access to the tree. With them, you can change the document's structure, style, or content.
 - Nodes can also have event handlers attached to them. Once an event is triggered, the event handlers get executed.
-
-## HTML DOM
-
-- A document containing HTML is described using the Document interface, which is extended by the HTML specification to include various HTML-specific features
-- In particular, the [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) interface is enhanced to become [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) and various subclasses, each representing one of (or a family of closely related) elements
-  - `Element` is the most general base class from which all element objects in a Document inherit. It only has methods and properties common to all kinds of elements - has a HUGE # of properties, events and methods
-  - The `HTMLElement` interface represents any HTML element. Some elements directly implement this interface, while others implement it via an interface that inherits it: has a HUGE # of properties, such as accessKey, contentEditable, dataset, dir, innerText, lang, nonce, outerText - and methods, such as blur, click, focus - also Events
-- The HTML DOM API provides access to various browser features such as tabs and windows, CSS styles and stylesheets, browser history, and so forth. These interfaces are discussed further in the [HTML DOM API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) documentation
-
-<div align="right"><a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
-
-## SVG interfaces
-
-- a lot of SVG interfaces
-
-<h3 id="mdn-manipulating-documents" align="center"><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"><strong>MDN Manipulating documents</strong></a>
-</h3>
-
-One of the most common things you'll want to do is manipulate the document structure in some way. This is usually done by using the DOM, a set of APIs for controlling HTML and styling information that makes heavy use of the Document object.
-
-- The window is the browser tab that a web page is loaded into; this is represented in JavaScript by the [Window](https://developer.mozilla.org/en-US/docs/Web/API/Window) object: console, history, innerHeight, innerWidth, ...
-- The navigator represents the state and identity of the browser as it exists on the web. In JavaScript, this is represented by the [Navigator](https://developer.mozilla.org/en-US/docs/Web/API/Navigator) object. You can use this object to retrieve things like the user's preferred `language`, a media stream from the user's webcam, etc...also `geoLocation`, `userAgent`, `cookieEnabled`, `storage`, `userAgent`,
-- The document is the actual page loaded into the window, and is represented in JavaScript by the [Document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object - You can use this object to return and manipulate information on the HTML and CSS that comprises the document
-
-### Document interface
-
-1. Constructor: `Document()`
-2. Instance properties: Starts with `Document.` - `body`, `children`, `documentElement`, `documentURI`, `firstElementChild`, `forms`, `head`, `images`, `lastElementChild`, `links`, `plugins`, `scripts`, `styleSheets` | `cookie`, `dir`, `lastModified`, `location`, `readyState`, `title`, `URL`
-3. Instance methods: `append()` `createAttribute()` `createComment()` `createElement()` `createTextNode()` `getElementById()` `getElementByClassName()` `getElementByTagName()` `open()` `prepend()` `querySelector()` `querySelectorAll()` among others
-4. Events: `copy`, `cut`, `DomContentLoaded`, `paste`, `scroll`, `scrollend`, `selectionchange`, `visibilitychange` to name just a few
-5. Inheritance: `Node`, `EventTaeget`
-
-<div align="right"><a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
-
-## The document object model
 
 The document currently loaded in each one of your browser tabs is represented by a document object model. This is a "tree structure" representation created by the browser that enables the HTML structure to be easily accessed by programming languages
 
@@ -90,18 +79,142 @@ Each entry in the DOM tree is called a node. Nodes are also referred to by their
 - **Parent node**: A node which has another node inside it. For example, BODY is the parent node of SECTION in the above example.
 - **Sibling nodes**: Nodes that sit on the same level in the DOM tree. For example, IMG and P are siblings in the above example, or e.g. `div` > `img` `p`.
 
+Check out (on the same page) [HTML DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#html_dom), [DOM Interfaces](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#dom_interfaces), and [SVG Interfaces](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#svg_interfaces). Also check out [Introduction to the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction).
+
+### HTML DOM
+
+- A document containing HTML is described using the Document interface, which is extended by the HTML specification to include various HTML-specific features
+- In particular, the [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) interface is enhanced to become [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) and various subclasses, each representing one of (or a family of closely related) elements
+  - `Element` is the most general base class from which all element objects in a Document inherit. It only has methods and properties common to all kinds of elements - has a HUGE # of properties, events and methods
+  - The `HTMLElement` interface represents any HTML element. Some elements directly implement this interface, while others implement it via an interface that inherits it: has a HUGE # of properties, such as accessKey, contentEditable, dataset, dir, innerText, lang, nonce, outerText - and methods, such as blur, click, focus - also Events
+- The HTML DOM API provides access to various browser features such as tabs and windows, CSS styles and stylesheets, browser history, and so forth. These interfaces are discussed further in the [HTML DOM API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) documentation
+
+### DOM interfaces
+
+- These look interesting: Attr, Comment (WordPress?), CustomEvent, **Document**, DocumentType, Element, Event, EventTarget, HTMLCollection, Node, NodeList, Text, TimeRanges
+  , and XMLDocument.
+
+### SVG interfaces
+
+There are a lot of links here. Start looking into them so that I can create all my guitar chords via JavaScript and have them look way better than what other people are creating.
+
+### Introduction to the DOM
+
+The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web.
+
+This is a large page with the following subheadings:
+
+- What is the DOM?
+- DOM and JavaScript
+- Accessing the DOM
+- Fundamental data types
+- DOM interfaces
+  - Interfaces and objects
+  - Core interfaces in the DOM
+- Examples:
+  - Setting text content - the HTML, CSS, and JS
+  - Adding a child element - the HTML, CSS, and JS
+
+<div align="right"><a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
+## Manipulating documents
+
+[MDN Manipulating documents](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
+
+One of the most common things you'll want to do is manipulate the document structure in some way. This is usually done by using the DOM, a set of APIs for controlling HTML and styling information that makes heavy use of the Document object.
+
+Another long page - here are the headings:
+
+- The important parts of a web browser
+- The document object model
+- Active learning: Basic DOM manipulation
+  - Creating and placing new nodes
+  - Moving and removing elements
+  - Manipulating styles
+- Active learning: A dynamic shopping list
+
+Here are some notes from the first section:
+
+- The window is the browser tab that a web page is loaded into; this is represented in JavaScript by the [Window](https://developer.mozilla.org/en-US/docs/Web/API/Window) object: console, history, innerHeight, innerWidth, ...
+- The navigator represents the state and identity of the browser as it exists on the web. In JavaScript, this is represented by the [Navigator](https://developer.mozilla.org/en-US/docs/Web/API/Navigator) object. You can use this object to retrieve things like the user's preferred `language`, a media stream from the user's webcam, etc...also `geoLocation`, `userAgent`, `cookieEnabled`, `storage`, `userAgent`,
+- The document is the actual page loaded into the window, and is represented in JavaScript by the [Document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object - You can use this object to return and manipulate information on the HTML and CSS that comprises the document
+
+### Document
+
+Constructor: `Document()`
+
+Instance properties: Starts with `Document.`
+
+- `body`
+- `children`
+- `contentType`
+- `cookie`
+- `dir`
+- `doctype`
+- `documentElement`
+- `documentURI`
+- `firstElementChild`
+- `forms`
+- `fullscreenElement`
+- `head`
+- `hidden`
+- `images`
+- `lastElementChild`
+- `lastModified`
+- `links`
+- `location`
+- `plugins`
+- `readyState`
+- `referrer`
+- `scripts`
+- `styleSheets`
+- `title`
+- `URL` and more...
+
+Instance methods:
+
+- `append()`
+- `close()`
+- `createAttribute()`
+- `createComment()`
+- `createElement()`
+- `createTextNode()`
+- `getElementById()`
+- `getElementByClassName()`
+- `getElementByTagName()`
+- `getElementsByClassName()`
+- `getElementsByName()`
+- `hasFocus()`
+- `open()`
+- `prepend()`
+- `querySelector()`
+- `querySelectorAll()` among others
+
+Events:
+
+- `copy`:
+- `cut`:
+- `DomContentLoaded`:
+- `paste`:
+- `scroll`:
+- `scrollend`:
+- `visibilitychange`, ...:
+
+Inheritance: `Node`, `EventTarget`
+
+<div align="right"><a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
+## Dom Manipulation Methods
+
+Targeting Nodes, Creating and Adding elements, Editing/Modifying elements, Removing elements, and Modifying the content inside elements
+
 _Creating and placing new nodes_: querySelector > createElement > appendChild > createTextNode > querySelector > appendChild
 
 _Moving (?) and removing elements_: appendChild > removeChild > remove > removeChild
 
-> THIS IS IT:
->
-> 1.  `querySelector` > `createElement` > `textContent` > `appendChild` or `append`
-> 2.  `querySelector` > `createTextNode` > `innerText` > `appendChild` or `append`
-
----
-
 [DOM manipulation in JavaScript](https://codedamn.com/news/javascript/dom-manipulation-in-javascript)
+
+> STOPPED EDITING TTHIS FILE HERE - I HAVE A LOT OF REPEATED STUFF IN THIS FILE
 
 - The browser produces a Document Object Model of a web page when it is loaded.
 - The HTML DOM model is built as a hierarchy of Objects.
@@ -128,12 +241,6 @@ The HTML DOM is a programming interface and standard object model for HTML. It s
 - All HTML elements have their own set of events.
 
 In other words, the HTML DOM is a set of rules for <ins>getting</ins>, <ins>changing</ins>, <ins>adding</ins>, and <ins>removing</ins> HTML elements.
-
-<div align="right"><a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
-
-### Dom Manipulation Methods
-
-Targeting Nodes, Creating and Adding elements, Editing/Modifying elements, Removing elements, and Modifying the content inside elements
 
 ### Targeting Nodes
 
@@ -239,12 +346,6 @@ const alertOutput = `
 // NO, THIS IS ALL MESSED UP
 ```
 
-> Try this:
->
-> 1. getElementById or querySelector or other selector >
-> 2. variable with a template string for html, classes and tags
-> 3. insertAdjacentHTML('beforeend', varName)
-
 <div align="right"><a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
 
 #### 5 Editing element attributes
@@ -277,8 +378,6 @@ const alertOutput = `
 - **Static NodeList** - If the DOM updates, the changes are not reflected in the collection.
 
 <div align="right"><a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
-
----
 
 [Manipulating the DOM using Javascript](https://dev.to/arikaturika/manipulating-the-dom-using-javascript-how-to-select-nodes-part-1-38j)
 
@@ -320,7 +419,7 @@ Later maybe:
 
 <div align="right"><a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
 
-## 17 DOM Manipulation Methods
+## DOM Manipulation Methods
 
 [17 Most Important DOM Manipulation Methods in JavaScript](https://codevoweb.com/important-dom-manipulation-methods-in-javascript/)
 
@@ -438,5 +537,57 @@ Inheritance:
 - you probably only ever want to use `innerText` but `textContent` is faster but not by a lot - both will overwrite any text that is in the html if you use them to set the text
 - `innerHTML`: returns/retrieves the text inside an element but also all the tags inside the element - I used this with `+=` and maybe with ul > li tags
 - `value`, `src`, `href`, and more:
+
+<div align="right"><a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
+## Miscellaneous
+
+excellent Odin [Project code blocks](https://www.theodinproject.com/lessons/foundations-dom-manipulation-and-events)
+
+### Targeting Nodes with Selectors
+
+```html
+<div id="container">
+  <div class="display"></div>
+  <div class="controls"></div>
+</div>
+```
+
+```js
+const container = document.querySelector('#container');
+// selects the #container div (don't worry about the syntax, we'll get there)
+
+console.dir(container.firstElementChild);
+// selects the first child of #container => .display
+
+const controls = document.querySelector('.controls');
+// selects the .controls div
+
+console.dir(controls.previousElementSibling);
+// selects the prior sibling => .display
+```
+
+### Element Creation
+
+```js
+const div = document.createElement('div');
+```
+
+### Editing Attributes
+
+```js
+div.setAttribute('id', 'theDiv');
+// if id exists, update it to 'theDiv', else create an id
+// with value "theDiv"
+
+div.getAttribute('id');
+// returns value of specified attribute, in this case
+// "theDiv"
+
+div.removeAttribute('id');
+// removes specified attribute
+```
+
+> THIS PAGE HAS A LOT OF GREAT STUFF
 
 <div align="right"><a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
