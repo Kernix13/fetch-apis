@@ -40,7 +40,7 @@ async function fetchByUrl(url) {
     return err;
   }
 }
-fetchByUrl('https://api.dictionaryapi.dev/api/v2/entries/en/hello');
+fetchByUrl('https://api.github.com/users/Kernix13');
 ```
 
 A more common API has options for different endpoints, so the following function takes 2 parameters, 1 for the base URL and the 2nd for the endpoint options:
