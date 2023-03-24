@@ -117,3 +117,5 @@ fetchByParams('https://dog.ceo/api', '/breed', '/hound', '/images');
 ```
 
 Look into `Promise.allSettled()` or just `allSettled()`.
+
+<!-- Testing a push after 2FA on this laptop, but failing to log into my GitHub account on another laptop -->
