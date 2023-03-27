@@ -5,6 +5,34 @@
 - an alternative to XMLHttpRequest
 - also better than Callbacks and Promises
 
+<div id="back-to-top"></div>
+
+## Table of Contents
+
+1. [JSON and promises](#json-and-promises)
+1. [Async Await](#Async-Await)
+1. [Notes from Net Ninja Async playlist](#notes-from-net-ninja-async-playlist)
+1. [Async and Await and throwing errors](#async-and-await-and-throwing-errors)
+1. [Search results](#search-results)
+   1. [Refactoring Fetch to Async Await](#refactoring-fetch-to-async-await)
+1. [My notes](#my-notes)
+1. [Fetch API Introduction by Brad Traversy](#fetch-api-introduction-by-brad-traversy)
+1. [Notes From Web Dev Simplified](#notes-from-web-dev-simplified)
+1. [Notes From codeSTACKr](#notes-from-codestackr)
+1. [Notes From LearnWebCode](#notes-from-learnwebcode)
+1. [Notes From The Coding Train](#notes-from-the-coding-train)
+   1. [Working With Data & APIs in JavaScript](#working-with-data-&-apis-in-javascript)
+   1. [Graphing with Chartjs](#graphing-with-chartjs)
+   1. [JSON](#json)
+   1. [Mapping Geolocation with Leafletjs](#mapping-geolocation-with-leafletjs)
+   1. [Refreshing Data with setInterval](#refreshing-data-with-setinterval)
+   1. [Server-side with Nodejs](#server-side-with-nodejs)
+1. [Async function](#async-function)
+   1. [Syntax](#syntax)
+1. [Response json method](#response-json-method)
+1. [FINAL FETCH AND SIMILIAR METHODS](#final-fetch-and-similiar-methods)
+   1. [Example using headers](#example-using-headers)
+
 ## JSON and promises
 
 - use `JSON.parse()` to convert the string into JS Objects
@@ -20,6 +48,8 @@
 - `.then()` is for resolve, `.catch()` is for reject
 - look in the console under `prototype` and see the method `json` - use that method on the response object which gets the data
 - `response.json()` parses the data like `JSON.parse()`- but it returns a promise
+
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
 
 ## Async Await
 
@@ -48,6 +78,8 @@
 - use `.catch() `for the error
 - `.then()` is for resolve, `.catch()` is for reject
 
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
 ## Async and Await and throwing errors
 
 - they allow you to chain promises together easier
@@ -70,7 +102,9 @@ vs
 `const response = await fetch(...)`
 `const data = await response.json()`
 
-### Refactoring Fetch to Async/Await
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
+### Refactoring Fetch to Async Await
 
 ```js
 // Basic fetch
@@ -87,12 +121,14 @@ const getUser = async name => {
 };
 
 //get user data
-getUser("yourUsernameHere").then(console.log(data));
+getUser('yourUsernameHere').then(console.log(data));
 ```
 
 More links: **https://javascript.plainenglish.io/refactoring-promise-chains-w-async-await-d126c7fac3a8**: has a promise lifecycle image | https://bonsaiilabs.com/js-fetch-async-await/ has a 42 min video | https://dev.to/jasonmeidev/refactoring-es6-fetch-with-async-await-4i31 - very short | https://betterprogramming.pub/promises-with-async-await-605645a6c0e8 - also very good |
 
-# My notes
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
+## My notes
 
 pass parameters or not but then
 
@@ -139,6 +175,8 @@ I did shorthand for the obj in JSON.stringify - now getting `ReferenceError: res
 - also check [MDN fetch](https://developer.mozilla.org/en-US/docs/Web/API/fetch)
 - the 2nd argument is called `options` and can have `method`, `headers`, `body`, mode, credentials, cache, redirect, referrer, referrerPolicy, integrity, keepalive, and signal.
 
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
 ## Notes From Web Dev Simplified
 
 Video: Learn Fetch API In 6 Minutes
@@ -162,15 +200,17 @@ Video: Fetch API Explained - Working with Data & APIs in JavaScript
 ```js
 const createNewPost = post => {
   const options = {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(post),
     headers: new Headers({
-      "Content-Type": "application/json"
-    })
+      'Content-Type': 'application/json',
+    }),
   };
   // more code here
 };
 ```
+
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
 
 ## Notes From LearnWebCode
 
@@ -203,13 +243,15 @@ From YT channel The Coding TRain and the playlist is the _Working with data and 
 async function getRainbow(url) {
   const response = await fetch(url);
   const blob = await response.blob();
-  document.getElementById("fetch-image").src = URL.createObjectURL(blob);
+  document.getElementById('fetch-image').src = URL.createObjectURL(blob);
 }
 
-getRainbow("https://unsplash.it/300/200");
+getRainbow('https://unsplash.it/300/200');
 ```
 
-### video 1.2 Tabular Data - Working With Data & APIs in JavaScript
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
+### Working With Data & APIs in JavaScript
 
 He wants to fetch a `*.csv` file rom NASA titled "Combined Land-Surface Air and Sea-Surface Temperature Anomalies (Land-Ocean TEmperature Index, LOTI)" - that is no longer there. Go to https://data.giss.nasa.gov/gistemp/, scroll to "Tables of Global and Hemispheric Monthly Means and Zonal Annual Means", and d\l the csv for "Zonal annual means". He has another link:
 
@@ -228,7 +270,9 @@ He wants to fetch a `*.csv` file rom NASA titled "Combined Land-Surface Air and 
 - added .trim in front of .split to remove the line at the end
 - But what if the data has commas in it?
 
-### video 1.3: Graphing with Chart.js
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
+### Graphing with Chartjs
 
 Charts: 1) Canvas API, 2) D3.js, 3) p5.js, 4) Chart.js
 
@@ -237,26 +281,28 @@ Charts: 1) Canvas API, 2) D3.js, 3) p5.js, 4) Chart.js
 
 > SKIP
 
-### video 1.4: JSON
+### JSON
 
 - ISS API and use Leaflet to map it's location - you could also use Google Maps or MapBox
 - get lat & long and plot it on a map
 - https://wheretheiss.at/ and https://wheretheiss.at/w/developer
 
-#### JSON
+More JSON
 
 - https://api.wheretheiss.at/v1/satellites
 - id: 25544
 - https://api.wheretheiss.at/v1/satellites/25544
 
-### Video 1.5 Mapping Geolocation with Leaflet.js
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
+### Mapping Geolocation with Leafletjs
 
 - go to the quick start guide - https://leafletjs.com/examples/quick-start/ or the docs https://leafletjs.com/reference.html
 - get the link, script and div tags and the css
 - I'm not getting the fucking map - he has an img to use as an icom for the marker -
 - there is a shitton of markup but no map
 
-### Video: Refreshing Data with setInterval
+### Refreshing Data with setInterval
 
 - last video did not go well
 - how to have the lat and long update without having to reload the page -
@@ -270,7 +316,9 @@ setInterval(functionName, intervalAmount);
 setInterval(fetchISSLocation, 1000);
 ```
 
-### Video: 2.1 Server-side with Node.js
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
+### Server-side with Nodejs
 
 - just watched then
 - video: 2.2 Geolocation Web API - just watched then
@@ -279,14 +327,6 @@ setInterval(fetchISSLocation, 1000);
 - video: 2.5 Database Query
 - video: 2.6 Saving Images and Base64 Encoding
 - video: 2.7 Project Wrap-up: Accessibility and Design
-
-### video: 3.1 API calls from Node.js (Weather data from Dark Sky)
-
-- eee
-
-#### video: 3.4 Hiding API Keys with Environment Variables (dotenv) and Pushing Code to GitHub
-
-- eee
 
 https://www.youtube.com/playlist?list=PLRqwX-V7Uu6YxDKpFzf_2D84p0cyk4T7X
 
@@ -323,6 +363,8 @@ async function name(...params) {
 
 I have no interest in using `Promise` or `.then()`.
 
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
 ## Response json method
 
 From [MDN Response.json](https://developer.mozilla.org/en-US/docs/Web/API/Response/json):
@@ -332,3 +374,220 @@ From [MDN Response.json](https://developer.mozilla.org/en-US/docs/Web/API/Respon
 From [MDN Response](https://developer.mozilla.org/en-US/docs/Web/API/Response):
 
 > The Response interface of the Fetch API represents the response to a request
+
+## FINAL FETCH AND SIMILIAR METHODS
+
+```js
+// GEt ul id's deom index.html
+const results = document.getElementById('results'); // xhr
+const results1 = document.getElementById('results1'); // xhr II
+const results2 = document.getElementById('results2'); // new Promise (N/A)
+const results3 = document.getElementById('results3'); // fetch with .then
+const results4 = document.getElementById('results4'); // fetch async await
+const results5 = document.getElementById('results5'); // arrow fetch async await
+const results6 = document.getElementById('results6'); // axios with .then
+const results7 = document.getElementById('results7'); // axios async await
+
+/* XMLHttpRequest, I do not have any error handling for this method */
+// this does not return a promise
+const xhr = new XMLHttpRequest(); // 1. initialize xhr http request obj
+
+// 2. call the open(type, url or file) method first (1st CB)
+xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+// 3. 2nd CB if there is an error - do I need this?
+xhr.onerror = err => console.log(err);
+
+// 4. create an event handler for an event called onreadystatechange
+xhr.onreadystatechange = function () {
+  // norris.js has a nested if block alternative
+  if (this.readyState === 4 && this.status === 200) {
+    const data = JSON.parse(this.responseText);
+    data.forEach(user => {
+      const li = document.createElement('li');
+      const liText = document.createTextNode(user.name);
+      li.append(liText);
+      results.append(li);
+    });
+  }
+};
+xhr.send(); // 5. use the send() method to send the request
+// 6. & 7. What about xhr.setRequestHeader(a, b) and xhr.onload?
+// MDN example may be better than Brad's: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
+
+/* Fetch API with .then() */
+// Look into Promise.resolve(data) maybe with
+function getUsers() {
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.log(response);
+        throw new Error(`Status Code Error: ${response.status}`);
+      }
+    })
+    .then(data => {
+      data.forEach(user => {
+        const li = document.createElement('li');
+        const liText = document.createTextNode(user.name);
+        li.append(liText);
+        results3.append(li);
+      });
+    })
+    .catch(error => console.log(error));
+}
+getUsers();
+
+/* Fetch API async/await */
+async function getUsers2() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    if (response.ok) {
+      const data = await response.json();
+
+      data.forEach(user => {
+        const li = document.createElement('li');
+        const liText = document.createTextNode(user.name);
+        li.append(liText);
+        results4.append(li);
+      });
+    } else {
+      console.log('Not successful');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+getUsers2();
+
+/* Fetch API async/await () => version */
+const getUsers3 = async () => {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    if (response.ok) {
+      const data = await response.json();
+
+      data.forEach(user => {
+        const li = document.createElement('li');
+        const liText = document.createTextNode(user.name);
+        li.append(liText);
+        results5.append(li);
+      });
+      return data;
+    } else {
+      console.log('Not successful');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+getUsers3();
+
+/* Axios .then using .get() for a GET request */
+// in the console try axios.get('https://everyguitarchord.com/chord-intervals.json')
+axios
+  .get('https://jsonplaceholder.typicode.com/users')
+  .then(response => {
+    if (response.status === 200) {
+      const data = response.data;
+
+      data.forEach(user => {
+        const li = document.createElement('li');
+        const liText = document.createTextNode(user.name);
+        li.append(liText);
+        results6.append(li);
+      });
+    } else {
+      console.log('Not successful');
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+/* Axios async await */
+async function getUser4() {
+  try {
+    const response = await axios.get(
+      'https://jsonplaceholder.typicode.com/users'
+    );
+
+    if (response.status === 200) {
+      const data = response.data;
+      data.forEach(user => {
+        const li = document.createElement('li');
+        const liText = document.createTextNode(user.name);
+        li.append(liText);
+        results7.append(li);
+      });
+    } else {
+      console.log('Not successful');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+getUser4();
+
+/* can't use new Promise with a public API  */
+// No clue how to use it with an API endpoint
+// I only see setTimeout() used with new Promise() - WTF?
+
+/* XMLHttpRequest II from Steele lesson 292 */
+const xhr2 = new XMLHttpRequest(); // 1. initialize xhr http request obj
+// Need 2 event handler callbacks: 1. onload, 2. and onerror
+xhr2.onload = function () {
+  if (this.readyState === 4 && this.status === 200) {
+    console.log(this);
+    const data = JSON.parse(this.responseText);
+    data.forEach(user => {
+      const li = document.createElement('li');
+      const liText = document.createTextNode(user.name);
+      li.append(liText);
+      results1.append(li);
+    });
+  }
+};
+xhr2.onerror = function () {
+  console.log('Eroor');
+  console.log(this);
+};
+xhr2.open('GET', 'https://jsonplaceholder.typicode.com/users'); // open the request
+xhr2.send(); // send the request
+```
+
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
+
+### Example using headers
+
+```js
+const btn = document.querySelector('button');
+const p = document.getElementById('joke');
+
+const getDadJoke = async () => {
+  try {
+    const config = {
+      headers: {
+        Accept: 'application/json',
+      },
+    };
+
+    const response = await axios.get('https://icanhazdadjoke.com/', config);
+    return response.data.joke;
+  } catch (error) {
+    console.log(error);
+    return 'No jokes available.';
+  }
+};
+
+async function appendJoke() {
+  const jokeText = await getDadJoke();
+  p.innerText = '';
+  const joke = document.createTextNode(jokeText);
+  p.append(joke);
+}
+
+btn.addEventListener('click', appendJoke);
+```
+
+<div align="right">&#8673; <a href="#back-to-top" title="Table of Contents">Back to Top</a></div>
