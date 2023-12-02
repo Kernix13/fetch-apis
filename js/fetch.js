@@ -4,6 +4,8 @@ async function getImage(url) {
     const response = await fetch(url);
     console.log("It Worked!");
     if (response.ok) {
+      // the unsplash url is blocked by CORS so this is not working
+      console.log(response)
       const blob = await response.blob();
       document.getElementById("fetch-image").src = URL.createObjectURL(blob);
     } else {
