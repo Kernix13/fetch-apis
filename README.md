@@ -97,10 +97,15 @@ And of course, you can add additonal parameters for more comples endpoints. This
 
 ```js
 /* 3. With 3 parameters */
-async function fetchByParams(baseUrl, option1, option2, option3) {
+const BASEURL = 'https://dog.ceo/api';
+async function fetchByParams(BASEURL, option1, option2, option3) {
   try {
-    const response = await fetch(`${baseUrl}${optio1}${option2}${option3}`);
+    const response = await fetch(`${BASEURL}${optio1}${option2}${option3}`);
 
+    if (!response.ok) {
+      throw new Error(response.status, response.statusText);
+      console.log(response);
+    }
     if (response.ok) {
       const data = await response.json();
       console.log(data); // code for working with data here
@@ -116,6 +121,4 @@ async function fetchByParams(baseUrl, option1, option2, option3) {
 fetchByParams('https://dog.ceo/api', '/breed', '/hound', '/images');
 ```
 
-Look into `Promise.allSettled()` or just `allSettled()`.
-
-<!-- Testing a push after 2FA on this laptop, but failing to log into my GitHub account on another laptop -->
+> Look into `Promise.allSettled()`.
