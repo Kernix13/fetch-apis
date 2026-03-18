@@ -5,6 +5,8 @@
 My notes and code examples for getting API data using async & await with the fetch API. I will add RESTful APIs including the WordPress REST API at a later date.
 
 > I love React for the ease of writing to the DOM, especially when you need to display lists!
+>
+> Look at my notes in https://github.com/Kernix13/the-quote-card-express for notes on using Express.
 
 ## Files
 
